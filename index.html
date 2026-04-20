@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王渼荃 | AI影视创作者 & 导演</title>
+    <!-- 引入一个优雅的字体和图标库 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- 整体设计配置 --- */
+        :root {
+            --bg-color: #121212; /* 背景色 */
+            --surface-color: #1e1e1e; /* 卡片/表层颜色 */
+            --primary-color: #3498db; /* 主题色/链接色 */
+            --text-color: #e0e0e0; /* 主要文字颜色 */
+            --secondary-text-color: #a0a0a0; /* 次要文字颜色 */
+            --border-color: #333; /* 边框颜色 */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 导航栏 --- */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+        .nav-links li {
+            margin-left: 25px;
+        }
+        .nav-links a {
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        /* --- Section通用样式 --- */
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: var(--text-color);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- 首页 Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.9)), url('https://source.unsplash.com/random/1600x900/?filmmaking,ai') no-repeat center center/cover;
+        }
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hero-content .subtitle {
+            font-size: 24px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: var(--secondary-text-color);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        
+        /* --- 作品集 Portfolio Section --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .portfolio-item {
+            background: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            /* 提示: 在这里为每个项目设置背景图 */
+            background-size: cover;
+            background-position: center;
+        }
+        .portfolio-content {
+            padding: 20px;
+        }
+        .portfolio-content h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        .portfolio-content .role {
+            font-style: italic;
+            color: var(--secondary-text-color);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .portfolio-content .award {
+            font-size: 14px;
+            color: #f1c40f; /* 奖项用金色突出 */
+        }
+        
+        /* --- 关于我 About Section --- */
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .about-text {
+            flex: 2;
+        }
+        .about-skills {
+            flex: 1;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .about-skills h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        .about-skills ul {
+            list-style: none;
+        }
+        .about-skills li {
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .btn-resume {
+            margin-top: 20px;
+        }
+        
+        /* --- 联系方式 Contact Section --- */
+        #contact .container {
+            text-align: center;
+        }
+        .contact-info {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .social-links a {
+            color: var(--secondary-text-color);
+            font-size: 28px;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* --- 响应式设计 --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* 移动端可添加汉堡菜单 */
+            .about-content { flex-direction: column; }
+            .hero-content h1 { font-size: 36px; }
+            .hero-content .subtitle { font-size: 20px; }
+        }
+
+        /* --- 作品详情弹窗 (Modal) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 900px;
+            background: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+        }
+        .modal-body {
+            /* 未来放视频和介绍的地方 */
+        }
+        .modal-body .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 宽高比 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: #000;
+        }
+        .modal-body .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .modal-body h3 { color: var(--primary-color); font-size: 24px; }
+        .modal-body p { color: var(--secondary-text-color); }
+    </style>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-logo">王渼荃</a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#about">关于我</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页 -->
+    <section id="home">
+        <div class="hero-content">
+            <h1>王渼荃</h1>
+            <p class="subtitle">AI影视创作者 & 导演</p>
+            <p>融合前沿AIGC技术与专业影视制作流程，致力于探索叙事的新边界，创作兼具视觉冲击力与情感深度的影像作品。</p>
+            <a href="#portfolio" class="btn">观看我的作品</a>
+        </div>
+    </section>
+
+    <!-- 作品集 -->
+    <section id="portfolio">
+        <div class="container">
+            <h2 class="section-title">作品集</h2>
+            <div class="portfolio-grid">
+                <!-- 项目1: AIGC短片 -->
+                <div class="portfolio-item" data-modal-id="peekaboo">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1677756119517-756a188d2d94?q=80&w=1470');"></div>
+                    <div class="portfolio-content">
+                        <h3>AIGC短片《Peekaboo躲猫猫》</h3>
+                        <p class="role">独立制作 (导演/编剧/AIGC艺术家)</p>
+                        <p class="award"><i class="fas fa-trophy"></i> 香港数码港AI大赛冠军、最佳叙事奖</p>
+                    </div>
+                </div>
+
+                <!-- 项目2: 微电影 -->
+                <div class="portfolio-item" data-modal-id="lovemovie">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1374');"></div>
+                    <div class="portfolio-content">
+                        <h3>微电影《像电影一样爱你》</h3>
+                        <p class="role">导演 / 编剧</p>
+                        <p class="award"><i class="fas fa-trophy"></i> CSFF影展入围、大学生技能大赛一等奖</p>
+                    </div>
+                </div>
+
+                <!-- 项目3: 广告 -->
+                <div class="portfolio-item" data-modal-id="ads">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1533750088811-731338342475?q=80&w=1470');"></div>
+                    <div class="portfolio-content">
+                        <h3>广告《微醺一刻》&《81岁的HBN美少女》</h3>
+                        <p class="role">导演 / 编剧 / 剪辑</p>
+                        <p class="award"><i class="fas fa-trophy"></i> 时报金犊奖、大广赛优秀奖</p>
+                    </div>
+                </div>
+
+                <!-- 项目4: 纪录片 -->
+                <div class="portfolio-item" data-modal-id="docs">
+                    <div class="portfolio-image" style="background-image: url('https://images.unsplash.com/photo-1599493351989-13e52f534839?q=80&w=1470');"></div>
+                    <div class="portfolio-content">
+                        <h3>纪录片《重韵之城》&《桃花宗梦》</h3>
+                        <p class="role">导演 / 摄像 / 独立制作</p>
+                        <p class="award"><i class="fas fa-trophy"></i> 人文纪录短片三等奖、优秀毕业设计</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>你好，我是王渼荃</h3>
+                    <p>我是一名对影像叙事充满热情的创作者，目前在香港浸会大学攻读电影、电视与新媒体制作硕士学位。我的本科背景是影视摄影与制作，这为我打下了坚实的全流程制作基础。</p>
+                    <p>在校期间，我不仅系统学习了从剧本开发、制片管理到拍摄剪辑的专业知识，更积极投身于实践，主导了多部微电影、纪录片和广告的创作，并屡获殊荣。在华龙网的编导实习经历，让我具备了高强度、标准化的内容生产能力。</p>
+                    <p>我对AIGC等前沿技术在影视创作中的应用抱有浓厚兴趣，并独立制作了AI生成短片，斩获香港数码港AI大赛冠军。我相信，技术是赋能创意的最佳工具。我渴望加入一个富有创造力和前瞻性的团队，共同探索未来影像的可能性。</p>
+                    <a href="YOUR_RESUME_PDF_LINK_HERE" class="btn btn-resume" target="_blank">下载我的简历 (PDF)</a>
+                </div>
+                <div class="about-skills">
+                    <h3>专业技能</h3>
+                    <ul>
+                        <li><i class="fas fa-brain"></i> <strong>AIGC技术:</strong> Midjourney, Runway, Pika, 可灵</li>
+                        <li><i class="fas fa-film"></i> <strong>影视全流程:</strong> 制片, 编导, 摄录, 剪辑, 调色</li>
+                        <li><i class="fas fa-laptop-code"></i> <strong>技术软件:</strong> Premiere Pro, Photoshop, DaVinci</li>
+                        <li><i class="fas fa-language"></i> <strong>语言能力:</strong> 中文 (母语), 英语 (IELTS 6.5)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <p class="contact-info">期待与您交流合作，您可以通过以下方式找到我。</p>
+            <p class="contact-info"><strong>邮箱:</strong> 15155351836@163.com</p>
+            <div class="social-links">
+                <!-- 提示: 将 # 替换为你的社交媒体主页链接 -->
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="Bilibili 或 Vimeo"><i class="fab fa-bilibili"></i></a>
+                <a href="mailto:15155351836@163.com" title="发送邮件"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 作品弹窗 Modal (通用结构) -->
+    <div id="project-modal" class="modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-content">
+            <div class="modal-body" id="modal-body-content">
+                <!-- 内容将由JavaScript动态填充 -->
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('project-modal');
+        const modalBody = document.getElementById('modal-body-content');
+        const closeBtn = document.querySelector('.close-button');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        // 预设的弹窗内容 (未来可以从API获取)
+        const projectDetails = {
+            'peekaboo': {
+                title: 'AIGC短片《Peekaboo躲猫猫》',
+                // 重要提示: 将下面的src替换为你的Bilibili或Vimeo视频嵌入链接
+                videoSrc: 'https://player.bilibili.com/player.html?aid=YOUR_VIDEO_ID&bvid=YOUR_BVID&cid=YOUR_CID&page=1',
+                description: '这是一个完全由AI生成的实验性短片。探索了在没有实际拍摄的情况下，如何利用Midjourney, Runway, Pika等工具构建一个完整且具有情感内核的叙事。项目挑战在于如何统一和控制由不同AI工具生成的视觉风格，并通过剪辑和配乐赋予其电影感。',
+                awards: '香港数码港AI生成电影创意大赛冠军、最佳叙事奖'
+            },
+            'lovemovie': {
+                title: '微电影《像电影一样爱你》',
+                videoSrc: 'https://player.bilibili.com/player.html?aid=YOUR_VIDEO_ID&bvid=YOUR_BVID&cid=YOUR_CID&page=1',
+                description: '作为导演和编剧，我主导了这部作品的从零到一。从剧本打磨、分镜设计，到现场调度和后期制作，这是一次全面的影视制作流程实践。作品旨在通过细腻的情感刻画和经典的电影语言，向爱情和电影本身致敬。',
+                awards: 'CSFF影展入围、重庆艺术展演微电影三等奖、大学生技能大赛一等奖'
+            },
+            // 其他项目...
+            'ads': {
+                title: '广告作品集',
+                videoSrc: 'https://player.bilibili.com/player.html?aid=YOUR_VIDEO_ID&bvid=YOUR_BVID&cid=YOUR_CID&page=1',
+                description: '包含《微醺一刻》和《81岁的HBN美少女》等商业广告项目。在这些项目中，我担任导演和剪辑，专注于如何通过精准的视听语言，在短时间内传递品牌信息并引发观众共鸣。',
+                awards: '第33届时报金犊奖、第15届大学生广告艺术大赛优秀奖'
+            },
+             'docs': {
+                title: '纪录片作品集',
+                videoSrc: 'https://player.bilibili.com/player.html?aid=YOUR_VIDEO_ID&bvid=YOUR_BVID&cid=YOUR_CID&page=1',
+                description: '《重韵之城》和《桃花宗梦》是我对现实题材的探索。我喜欢通过镜头去捕捉和记录真实人物的故事与情感，尤其是那些在时代变迁中坚守文化与传统的个体。这些项目锻炼了我敏锐的观察力和与被拍摄者建立信任的能力。',
+                awards: '重庆“IP·创未来”人文纪录短片三等奖、优秀版权奖'
+            }
+        };
+
+        portfolioItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const projectId = item.getAttribute('data-modal-id');
+                const details = projectDetails[projectId];
+                
+                if (details) {
+                    modalBody.innerHTML = `
+                        <div class="video-container">
+                            <iframe src="${details.videoSrc}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+                        </div>
+                        <h3>${details.title}</h3>
+                        <p>${details.description}</p>
+                        <br>
+                        <p><strong><i class="fas fa-trophy"></i> 所获奖项:</strong> ${details.awards}</p>
+                    `;
+                    modal.style.display = 'flex';
+                }
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalBody.innerHTML = ''; // 清空内容
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                modalBody.innerHTML = ''; // 清空内容
+            }
+        });
+    });
+    </script>
+</body>
+</html>
