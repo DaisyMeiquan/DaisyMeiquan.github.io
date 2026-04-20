@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我 - 王渼荃</title>
+    <title>作品集 - 王渼荃</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
         body { background-color: #e0f2e9; color: #333333; font-family: 'Noto Sans SC', sans-serif; display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
@@ -12,21 +12,29 @@
         .navbar a { color: #333333; text-decoration: none; margin: 0 15px; font-weight: bold; padding-bottom: 5px; border-bottom: 2px solid transparent; transition: all 0.3s; }
         .navbar a:hover, .navbar a.active { color: #5a8f7b; border-bottom-color: #5a8f7b; }
         h1 { color: #5a8f7b; border-bottom: 2px solid #e0f2e9; padding-bottom: 10px; margin-top: 0; }
-        p { line-height: 1.8; font-size: 1.1em; }
+        .project { margin-bottom: 40px; }
+        .project h2 { color: #333; }
+        .project p { line-height: 1.7; }
+        .project img { max-width: 100%; border-radius: 4px; margin-top: 15px; }
     </style>
 </head>
 <body>
     <div class="container">
         <nav class="navbar">
             <a href="index.html">首页</a>
-            <a href="about.html" class="active">关于我</a>
-            <a href="portfolio.html">作品集</a>
+            <a href="about.html">关于我</a>
+            <a href="portfolio.html" class="active">作品集</a>
             <a href="contact.html">联系我</a>
         </nav>
-        <h1>关于我</h1>
-        <p>您好，我是王渼荃。我是一名充满热情的 UI/UX 设计师和前端开发者，致力于创造既美观又易于使用的数字产品。</p>
-        <p>在这里替换成您的个人介绍、教育背景、技能点（例如：熟悉 Figma, Sketch, HTML, CSS, JavaScript 等）和工作经历。您可以分多个段落来详细描述。</p>
-        <p>我对探索用户需求、构建流畅的交互体验以及编写简洁高效的代码充满兴趣。我相信好的设计能够解决问题并带来价值。</p>
+        <h1>我的作品集</h1>
+        <div class="project">
+            <h2>项目一：XX APP 设计与开发</h2>
+            <p>这里是您对这个项目的描述。例如：这是一款专注于 [目标] 的移动应用。我负责了从用户研究、原型设计到最终 UI 视觉呈现的全过程，并参与了部分前端界面的实现。</p>
+        </div>
+        <div class="project">
+            <h2>项目二：某品牌官方网站改版</h2>
+            <p>这里是您对第二个项目的描述。例如：在此项目中，我主导了网站的 UI/UX 重新设计，旨在提升用户体验和品牌形象。通过 A/B 测试，新版网站的用户停留时间提升了 30%。</p>
+        </div>
     </div>
 </body>
 </html>
