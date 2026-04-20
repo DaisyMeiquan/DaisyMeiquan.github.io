@@ -66,12 +66,11 @@
             position: fixed;
             width: 100%;
             z-index: 1000;
-            background-color: transparent; /* 初始背景透明 */
+            background-color: transparent;
             transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
         .navbar.scrolled {
-            /* 滚动后背景变为半透明巧克力色 */
-            background-color: rgba(77, 19, 8, 0.85); /* var(--text-color) 的半透明版 */
+            background-color: rgba(77, 19, 8, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
@@ -82,7 +81,6 @@
             font-family: var(--font-heading);
             font-size: 24px;
             font-weight: 700;
-            /* 文字颜色改为浅色，以便在巧克力背景上显示 */
             color: var(--light-text-color); 
             text-decoration: none;
             transition: color 0.3s ease;
@@ -91,7 +89,6 @@
         .nav-links { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin-left: 35px; }
         .nav-links a {
-            /* 文字颜色改为浅色 */
             color: var(--light-text-color); 
             text-decoration: none;
             font-weight: 500;
@@ -100,10 +97,9 @@
             transition: color 0.3s ease;
         }
 
-        /* 悬停颜色调整 */
         .nav-logo:hover,
         .nav-links a:hover {
-            color: var(--primary-color); /* 悬停时变为更亮的奶昔粉色，对比更清晰 */
+            color: var(--primary-color);
         }
 
         .nav-links a::after {
@@ -113,7 +109,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color); /* 下划线也用奶昔粉色 */
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
         .nav-links a:hover::after { width: 100%; }
@@ -267,7 +263,7 @@
         .project-content p { font-size: 15px; opacity: 0.8; }
         
         /* --- 7. 关于我 (About Section) --- */
-        #about { background-color: var(--bg-color); } /* 背景色改回主背景色，与前后区分 */
+        #about { background-color: var(--bg-color); }
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
