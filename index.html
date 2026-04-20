@@ -10,18 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 1. 设计系统：基于您提供的配色方案 --- */
+        /* --- 1. 设计系统：全新浅色薄荷绿主题 --- */
         :root {
-            --bg-color: #4D1308;        /* Chair: 背景色 */
-            --primary-color: #E6B2BE;   /* Milkshake: 主高光色 (按钮, 姓名) */
-            --secondary-color: #A7CCC9; /* Mint: 次高光色 (头衔, 图标) */
-            --tertiary-color: #D06E89;  /* Rose: 点缀色1 */
-            --quaternary-color: #A27764;/* Coco: 点缀色2 */
-            --text-color: #F5F0ED;      /* 柔和的米白色，保证可读性 */
-            --text-color-dark: #2c1d1a; /* 用于浅色背景上的文字 */
-
-            --font-heading: 'Playfair Display', serif; /* 艺术感衬线字体用于大标题 */
-            --font-body: 'Noto Sans SC', sans-serif;   /* 清晰的无衬线字体 */
+            --bg-color: #A7CCC9;        /* MINT: 背景色 */
+            --text-color: #4D1308;      /* CHAIR: 主要文字颜色，确保对比度 */
+            --heading-color: #D06E89;   /* ROSE: 姓名等主标题颜色 */
+            --subtitle-color: #A27764;  /* COCO: 副标题颜色 */
+            --primary-color: #E6B2BE;   /* MILKSHAKE: 主按钮、高光颜色 */
+            --light-text-color: #F5F0ED;/* 用于深色背景上的文字（如按钮内） */
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Noto Sans SC', sans-serif;
         }
         
         /* --- 2. 基础与布局 --- */
@@ -33,6 +32,7 @@
             color: var(--text-color);
             line-height: 1.8;
             -webkit-font-smoothing: antialiased;
+            transition: background-color 0.5s ease;
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
 
@@ -44,31 +44,55 @@
             z-index: 100;
         }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: 24px; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color); /* 在浅色背景下，Logo使用深色文字 */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-logo:hover { color: var(--heading-color); }
         .nav-links { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin-left: 35px; }
-        .nav-links a { color: var(--text-color); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--heading-color); }
+        
+        /* --- 4. 按钮样式 (重新设计以适应浅色背景) --- */
         .btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--text-color-dark);
-            padding: 10px 25px;
-            border-radius: 6px;
+            background: var(--primary-color); /* Milkshake Pink */
+            color: var(--text-color); /* Chair Brown Text */
+            padding: 12px 28px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
             border: 2px solid var(--primary-color);
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .btn:hover { background: transparent; color: var(--primary-color); }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            background: #e9a5b4; /* 悬停时加深一点点 */
+        }
         .btn-secondary {
             background: transparent;
-            color: var(--primary-color);
-            border-color: var(--primary-color);
+            color: var(--heading-color); /* Rose color */
+            border-color: var(--heading-color);
+            box-shadow: none;
         }
-        .btn-secondary:hover { background: var(--primary-color); color: var(--text-color-dark); }
-        
-        /* --- 4. 英雄区 (Hero Section) - 核心设计区域 --- */
+        .btn-secondary:hover {
+            background: var(--heading-color);
+            color: var(--light-text-color); /* 变为浅色文字 */
+            box-shadow: 0 4px 15px rgba(208, 110, 137, 0.3);
+        }
+
+        /* --- 5. 英雄区 (Hero Section) --- */
         #home {
             height: 100vh;
             min-height: 700px;
@@ -77,7 +101,7 @@
         }
         .hero-container {
             display: grid;
-            grid-template-columns: 1.2fr 1fr; /* 左侧内容区更宽 */
+            grid-template-columns: 1.2fr 1fr;
             align-items: center;
             gap: 60px;
         }
@@ -85,19 +109,20 @@
             font-family: var(--font-heading);
             font-size: 64px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--heading-color); /* Rose Pink for the name */
             line-height: 1.2;
             margin: 10px 0;
         }
         .hero-text .subtitle {
             font-size: 28px;
-            color: var(--secondary-color);
+            color: var(--subtitle-color); /* Coco Brown for subtitle */
             font-weight: 500;
-            height: 40px; /* 固定高度防止抖动 */
+            height: 40px;
         }
         .hero-text p {
             font-size: 16px;
-            color: rgba(245, 240, 237, 0.8);
+            color: var(--text-color);
+            opacity: 0.8;
             max-width: 450px;
             margin: 20px 0 30px;
         }
@@ -109,18 +134,15 @@
             align-items: center;
         }
         .hero-image-wrapper .background-shape {
-            width: 100%;
-            padding-bottom: 100%; /* 保持1:1的圆形 */
-            background-color: var(--quaternary-color);
-            border-radius: 50%;
-            opacity: 0.3;
+            /* 移除背景形状，让图片更纯粹地展示 */
         }
         .hero-image-wrapper img {
-            position: absolute;
-            width: 90%;
+            width: 100%;
             height: auto;
             max-width: 400px;
             object-fit: cover;
+            border-radius: 16px; /* 给图片本身加一点圆角 */
+            box-shadow: 0 10px 40px rgba(77, 19, 8, 0.2); /* 使用Chair Brown作为阴影色 */
         }
 
         /* --- 动态打字效果 --- */
@@ -128,7 +150,7 @@
             display: inline-block;
             width: 3px;
             height: 28px;
-            background-color: var(--secondary-color);
+            background-color: var(--subtitle-color); /* 匹配副标题颜色 */
             animation: blink 1s infinite;
             margin-left: 5px;
             vertical-align: middle;
@@ -149,7 +171,6 @@
                 <li><a href="#portfolio">作品集</a></li>
                 <li><a href="#about">关于我</a></li>
                 <li><a href="#contact">联系我</a></li>
-                <li><a href="#contact" class="btn">雇佣我</a></li>
             </ul>
         </div>
     </nav>
@@ -176,26 +197,23 @@
             <div class="hero-image-wrapper">
                 <div class="background-shape"></div>
                 <!-- 
-                    重要提示: 
-                    请准备一张背景透明的个人半身照 (PNG格式)，命名为'my-photo.png'
-                    然后把它放在 'assets/images/' 文件夹下。
+                    重要提示: 图片路径依然是 'assets/images/my-photo.png'
+                    请确保您的GitHub仓库中有这个文件。
                 -->
                 <img src="assets/images/my-photo.png" alt="王渼荃的个人照片">
             </div>
         </div>
     </section>
 
-    <!-- 作品集、关于我、联系方式等部分 -->
-    <!-- (为了保持首页代码的清晰，这些部分可以先用占位符，后续再逐步添加) -->
-    <section id="portfolio" style="background-color: #5a2015;">
+    <!-- 占位符部分 -->
+    <section id="portfolio" style="background-color: #bfe0de;">
         <div class="container">
-            <h2 style="text-align: center; font-size: 40px; color: var(--primary-color);">作品集 Section</h2>
-            <!-- 这里将放置您的作品集网格 -->
+            <h2 style="text-align: center; font-size: 40px; color: var(--text-color);">作品集 Section</h2>
         </div>
     </section>
 
     <script>
-        // --- 动态打字效果脚本 ---
+        // --- 动态打字效果脚本 (无需改动) ---
         document.addEventListener('DOMContentLoaded', function() {
             const typingTextElement = document.getElementById('typing-text');
             const roles = ['影视导演', 'AI影像探索者', '创意编剧'];
@@ -216,21 +234,18 @@
                 }
 
                 typingTextElement.textContent = displayText;
-
                 let typeSpeed = isDeleting ? 100 : 200;
 
                 if (!isDeleting && charIndex === currentRole.length) {
-                    typeSpeed = 2000; // 完成一个词后的停留时间
+                    typeSpeed = 2000;
                     isDeleting = true;
                 } else if (isDeleting && charIndex === 0) {
                     isDeleting = false;
                     roleIndex = (roleIndex + 1) % roles.length;
-                    typeSpeed = 500; // 开始打新词前的延迟
+                    typeSpeed = 500;
                 }
-
                 setTimeout(type, typeSpeed);
             }
-
             type();
         });
     </script>
