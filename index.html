@@ -60,7 +60,7 @@
             margin: 0 auto;
         }
 
-        /* --- 3. 导航栏 (Navbar) --- [最终版本] --- */
+        /* --- 3. 导航栏 (Navbar) --- */
         .navbar {
             padding: 30px 0;
             position: fixed;
@@ -197,16 +197,21 @@
             transition: transform 0.3s ease;
         }
         .hero-image-wrapper:hover .background-shape { transform: scale(1.05); }
+
+        /* --- [重要修改] --- */
         .hero-image-wrapper img {
             position: relative;
             z-index: 2;
-            width: 90%; 
-            height: auto;
-            max-width: 400px;
-            object-fit: cover;
-            border-radius: 16px;
+            width: 85%; /* [修改] 将图片从90%缩小到85%，让背景圆看起来更大 */
+            height: auto; /* 高度自动，以保持图片比例 */
+            object-fit: cover; /* 确保图片内容填满圆形 */
+            border-radius: 50%; /* [修改] 将照片变成一个完美的圆形 */
             box-shadow: var(--shadow-md);
+            /* [新增] 确保圆形图片的长宽相等 */
+            aspect-ratio: 1 / 1;
         }
+        /* --- [修改结束] --- */
+
 
         .typing-cursor {
             display: inline-block;
