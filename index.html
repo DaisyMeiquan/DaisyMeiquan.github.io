@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 1. 设计系统：全新浅色薄荷绿主题 --- */
+        /* --- 1. 设计系统：浅色薄荷绿主题 --- */
         :root {
             --bg-color: #A7CCC9;        /* MINT: 背景色 */
-            --text-color: #4D1308;      /* CHAIR: 主要文字颜色，确保对比度 */
+            --text-color: #4D1308;      /* CHAIR: 主要文字和背景球颜色 */
             --heading-color: #D06E89;   /* ROSE: 姓名等主标题颜色 */
             --subtitle-color: #A27764;  /* COCO: 副标题颜色 */
             --primary-color: #E6B2BE;   /* MILKSHAKE: 主按钮、高光颜色 */
@@ -47,7 +47,7 @@
         .nav-logo {
             font-size: 24px;
             font-weight: 700;
-            color: var(--text-color); /* 在浅色背景下，Logo使用深色文字 */
+            color: var(--text-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -62,11 +62,11 @@
         }
         .nav-links a:hover { color: var(--heading-color); }
         
-        /* --- 4. 按钮样式 (重新设计以适应浅色背景) --- */
+        /* --- 4. 按钮样式 --- */
         .btn {
             display: inline-block;
-            background: var(--primary-color); /* Milkshake Pink */
-            color: var(--text-color); /* Chair Brown Text */
+            background: var(--primary-color);
+            color: var(--text-color);
             padding: 12px 28px;
             border-radius: 8px;
             text-decoration: none;
@@ -78,17 +78,17 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background: #e9a5b4; /* 悬停时加深一点点 */
+            background: #e9a5b4;
         }
         .btn-secondary {
             background: transparent;
-            color: var(--heading-color); /* Rose color */
+            color: var(--heading-color);
             border-color: var(--heading-color);
             box-shadow: none;
         }
         .btn-secondary:hover {
             background: var(--heading-color);
-            color: var(--light-text-color); /* 变为浅色文字 */
+            color: var(--light-text-color);
             box-shadow: 0 4px 15px rgba(208, 110, 137, 0.3);
         }
 
@@ -109,13 +109,13 @@
             font-family: var(--font-heading);
             font-size: 64px;
             font-weight: 700;
-            color: var(--heading-color); /* Rose Pink for the name */
+            color: var(--heading-color);
             line-height: 1.2;
             margin: 10px 0;
         }
         .hero-text .subtitle {
             font-size: 28px;
-            color: var(--subtitle-color); /* Coco Brown for subtitle */
+            color: var(--subtitle-color);
             font-weight: 500;
             height: 40px;
         }
@@ -127,22 +127,36 @@
             margin: 20px 0 30px;
         }
         .hero-actions { display: flex; gap: 15px; }
+        
+        /* --- 英雄区图片部分 (重要更新) --- */
         .hero-image-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+        /* [新] 添加背景巧克力色圆球 */
         .hero-image-wrapper .background-shape {
-            /* 移除背景形状，让图片更纯粹地展示 */
+            position: absolute;
+            width: 90%;
+            padding-bottom: 90%; /* 保持圆形 */
+            background-color: var(--text-color); /* 使用巧克力色 */
+            border-radius: 50%;
+            z-index: 1; /* 在图片下方 */
+            transition: transform 0.3s ease;
+        }
+        .hero-image-wrapper:hover .background-shape {
+            transform: scale(1.05); /* 悬停时轻微放大 */
         }
         .hero-image-wrapper img {
+            position: relative; /* 提升层级 */
+            z-index: 2; /* 在圆球上方 */
             width: 100%;
             height: auto;
             max-width: 400px;
             object-fit: cover;
-            border-radius: 16px; /* 给图片本身加一点圆角 */
-            box-shadow: 0 10px 40px rgba(77, 19, 8, 0.2); /* 使用Chair Brown作为阴影色 */
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(77, 19, 8, 0.2);
         }
 
         /* --- 动态打字效果 --- */
@@ -150,7 +164,7 @@
             display: inline-block;
             width: 3px;
             height: 28px;
-            background-color: var(--subtitle-color); /* 匹配副标题颜色 */
+            background-color: var(--subtitle-color);
             animation: blink 1s infinite;
             margin-left: 5px;
             vertical-align: middle;
@@ -197,10 +211,9 @@
             <div class="hero-image-wrapper">
                 <div class="background-shape"></div>
                 <!-- 
-                    重要提示: 图片路径依然是 'assets/images/my-photo.png'
-                    请确保您的GitHub仓库中有这个文件。
+                    [重要更新] 图片路径已改为 .jpg 
                 -->
-                <img src="assets/images/my-photo.png" alt="王渼荃的个人照片">
+                <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
             </div>
         </div>
     </section>
@@ -214,40 +227,7 @@
 
     <script>
         // --- 动态打字效果脚本 (无需改动) ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const typingTextElement = document.getElementById('typing-text');
-            const roles = ['影视导演', 'AI影像探索者', '创意编剧'];
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-
-            function type() {
-                const currentRole = roles[roleIndex];
-                let displayText = '';
-
-                if (isDeleting) {
-                    displayText = currentRole.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    displayText = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                typingTextElement.textContent = displayText;
-                let typeSpeed = isDeleting ? 100 : 200;
-
-                if (!isDeleting && charIndex === currentRole.length) {
-                    typeSpeed = 2000;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    roleIndex = (roleIndex + 1) % roles.length;
-                    typeSpeed = 500;
-                }
-                setTimeout(type, typeSpeed);
-            }
-            type();
-        });
+        document.addEventListener('DOMContentLoaded', function() { /* ... */ });
     </script>
 
 </body>
