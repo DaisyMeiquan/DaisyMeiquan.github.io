@@ -3,232 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王渼荃 | 影视导演 & AI影像探索者</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <title>王渼荃 | 个人主页</title>
     <style>
-        /* --- 1. 设计系统：浅色薄荷绿主题 --- */
-        :root {
-            --bg-color: #A7CCC9;        /* MINT: 背景色 */
-            --text-color: #4D1308;      /* CHAIR: 主要文字和背景球颜色 */
-            --heading-color: #D06E89;   /* ROSE: 姓名等主标题颜色 */
-            --subtitle-color: #A27764;  /* COCO: 副标题颜色 */
-            --primary-color: #E6B2BE;   /* MILKSHAKE: 主按钮、高光颜色 */
-            --light-text-color: #F5F0ED;/* 用于深色背景上的文字（如按钮内） */
-            
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Noto Sans SC', sans-serif;
-        }
-        
-        /* --- 2. 基础与布局 --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* 导入谷歌字体 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+        /* 整体页面样式 */
         body {
-            font-family: var(--font-body);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.5s ease;
-        }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
-
-        /* --- 3. 导航栏 (Navbar) --- */
-        .navbar {
-            padding: 30px 0;
-            position: absolute;
-            width: 100%;
-            z-index: 100;
-        }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .nav-logo:hover { color: var(--heading-color); }
-        .nav-links { list-style: none; display: flex; align-items: center; }
-        .nav-links li { margin-left: 35px; }
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .nav-links a:hover { color: var(--heading-color); }
-        
-        /* --- 4. 按钮样式 --- */
-        .btn {
-            display: inline-block;
-            background: var(--primary-color);
-            color: var(--text-color);
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 2px solid var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background: #e9a5b4;
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--heading-color);
-            border-color: var(--heading-color);
-            box-shadow: none;
-        }
-        .btn-secondary:hover {
-            background: var(--heading-color);
-            color: var(--light-text-color);
-            box-shadow: 0 4px 15px rgba(208, 110, 137, 0.3);
-        }
-
-        /* --- 5. 英雄区 (Hero Section) --- */
-        #home {
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-        }
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            align-items: center;
-            gap: 60px;
-        }
-        .hero-text h1 {
-            font-family: var(--font-heading);
-            font-size: 64px;
-            font-weight: 700;
-            color: var(--heading-color);
-            line-height: 1.2;
-            margin: 10px 0;
-        }
-        .hero-text .subtitle {
-            font-size: 28px;
-            color: var(--subtitle-color);
-            font-weight: 500;
-            height: 40px;
-        }
-        .hero-text p {
-            font-size: 16px;
-            color: var(--text-color);
-            opacity: 0.8;
-            max-width: 450px;
-            margin: 20px 0 30px;
-        }
-        .hero-actions { display: flex; gap: 15px; }
-        
-        /* --- 英雄区图片部分 (重要更新) --- */
-        .hero-image-wrapper {
-            position: relative;
+            background-color: #f5f5dc; /* 米色背景 */
+            color: #4a4a4a; /* 深灰色文字 */
+            font-family: 'Noto Sans SC', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        /* [新] 添加背景巧克力色圆球 */
-        .hero-image-wrapper .background-shape {
-            position: absolute;
-            width: 90%;
-            padding-bottom: 90%; /* 保持圆形 */
-            background-color: var(--text-color); /* 使用巧克力色 */
-            border-radius: 50%;
-            z-index: 1; /* 在图片下方 */
-            transition: transform 0.3s ease;
-        }
-        .hero-image-wrapper:hover .background-shape {
-            transform: scale(1.05); /* 悬停时轻微放大 */
-        }
-        .hero-image-wrapper img {
-            position: relative; /* 提升层级 */
-            z-index: 2; /* 在圆球上方 */
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(77, 19, 8, 0.2);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
         }
 
-        /* --- 动态打字效果 --- */
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 28px;
-            background-color: var(--subtitle-color);
-            animation: blink 1s infinite;
-            margin-left: 5px;
-            vertical-align: middle;
+        /* 主内容容器 */
+        .container {
+            max-width: 600px;
+            width: 100%;
         }
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        /* --- 后续部分占位 --- */
-        section { padding: 100px 0; }
+
+        /* 导航栏样式 */
+        .navbar {
+            margin-bottom: 40px;
+        }
+        .navbar a {
+            color: #4a4a4a;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent; /* 透明下划线占位 */
+            transition: border-color 0.3s;
+        }
+        .navbar a:hover, .navbar a.active {
+            color: #8B4513; /* 悬停/激活时变为巧克力色 */
+            border-bottom-color: #8B4513; /* 下划线变为巧克力色 */
+        }
+
+        /* 图片圆形容器 */
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            background-color: #8B4513; /* 巧克力色 */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto; /* 居中并与下方元素保持距离 */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* 头像图片样式 */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover; /* 确保图片不变形 */
+        }
+
+        /* 名字标题 */
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* 动态打字效果的文本样式 */
+        .subtitle {
+            font-size: 1.5em;
+            color: #8B4513; /* 巧克力色 */
+            height: 40px; /* 固定高度防止跳动 */
+            min-height: 1.5em;
+        }
     </style>
 </head>
 <body>
-
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#home" class="nav-logo">WMQ</a>
-            <ul class="nav-links">
-                <li><a href="#portfolio">作品集</a></li>
-                <li><a href="#about">关于我</a></li>
-                <li><a href="#contact">联系我</a></li>
-            </ul>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <a href="index.html" class="active">首页</a>
+            <a href="about.html">关于我</a>
+            <a href="portfolio.html">作品集</a>
+            <a href="contact.html">联系我</a>
+        </nav>
+        
+        <!-- 圆形头像 -->
+        <div class="photo-container">
+            <img src="assets/images/my-photo.jpg" alt="我的照片" class="profile-photo">
         </div>
-    </nav>
-
-    <!-- 首页 / 英雄区 -->
-    <section id="home">
-        <div class="container hero-container">
-            <!-- 左侧内容 -->
-            <div class="hero-text">
-                <p>你好，我是</p>
-                <h1>王渼荃</h1>
-                <div class="subtitle">
-                    <span id="typing-text"></span>
-                    <span class="typing-cursor"></span>
-                </div>
-                <p>以镜头为笔，以AI为墨，在光影中构建叙事，在算法中探索美学。致力于创作触动人心、超越想象的视觉故事。</p>
-                <div class="hero-actions">
-                    <a href="#portfolio" class="btn">探索作品</a>
-                    <a href="YOUR_CV_LINK.pdf" class="btn btn-secondary" target="_blank">下载简历</a>
-                </div>
-            </div>
-
-            <!-- 右侧视觉 -->
-            <div class="hero-image-wrapper">
-                <div class="background-shape"></div>
-                <!-- 
-                    [重要更新] 图片路径已改为 .jpg 
-                -->
-                <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
-            </div>
+        
+        <!-- 姓名和职位 -->
+        <h1>王渼荃</h1>
+        <div class="subtitle">
+            <span id="typed-text"></span>
         </div>
-    </section>
+    </div>
 
-    <!-- 占位符部分 -->
-    <section id="portfolio" style="background-color: #bfe0de;">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 40px; color: var(--text-color);">作品集 Section</h2>
-        </div>
-    </section>
-
+    <!-- 引入 Typed.js 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        // --- 动态打字效果脚本 (无需改动) ---
-        document.addEventListener('DOMContentLoaded', function() { /* ... */ });
+        // 初始化 Typed.js
+        new Typed('#typed-text', {
+          strings: ['UI/UX Designer', '前端开发者', '欢迎来到我的主页'],
+          typeSpeed: 100,
+          backSpeed: 50,
+          loop: true
+        });
     </script>
-
 </body>
 </html>
