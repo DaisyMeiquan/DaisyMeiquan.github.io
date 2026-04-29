@@ -42,7 +42,7 @@
  padding-top: 90px;
  }
  .container { 
-    max-width: 1200px; /* 【已修改】将最大宽度从1100px增加到1200px，让布局更舒展 */
+    max-width: 1200px;
     margin: 0 auto; 
     padding: 0 40px; 
  }
@@ -81,7 +81,9 @@
  .navbar .container { display: flex; justify-content: space-between; align-items: center; }
  .nav-logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--light-text-color); text-decoration: none; transition: color 0.3s ease; }
  .nav-links { list-style: none; display: flex; align-items: center; }
- .nav-links li { margin-left: 35px; }
+ .nav-links li {
+
+ margin-left: 35px; }
  .nav-links a {
  color: var(--light-text-color); 
  text-decoration: none;
@@ -157,9 +159,8 @@
  .project-image img { 
     width: 100%; 
     display: block;
-    /* 【已修改】确保图片按16:9比例显示，不再裁切 */
     aspect-ratio: 16 / 9;
-    object-fit: cover; /* 保留cover以防图片尺寸不标准，但aspect-ratio会优先保证比例 */
+    object-fit: cover;
  }
  .project-content { padding: 25px; }
  .project-content .category { display: inline-block; font-size: 12px; font-weight: 700; color: var(--subtitle-color); background-color: rgba(162, 119, 100, 0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 15px; }
@@ -272,8 +273,6 @@
 </head>
 <body>
 
- <!-- 下面的 HTML 和 SCRIPT 部分和之前完全一样，无需改动 -->
-
  <nav class="navbar">
  <div class="container">
  <a href="#home" class="nav-logo">WMQ</a>
@@ -311,9 +310,10 @@
  <h2>作品集 | Projects</h2>
  <p>从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
  </div>
+ <!-- 【已按您的要求更新顺序】 -->
  <div class="portfolio-grid">
  
- <!-- 项目 1: Peekaboo躲猫猫 -->
+ <!-- 项目 1: Peekaboo -->
  <div class="project-card" data-project-id="project1">
  <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo躲猫猫"></div>
  <div class="project-content">
@@ -322,7 +322,7 @@
  </div>
  </div>
  
- <!-- 项目 2: 《伴侣》预告片 -->
+ <!-- 项目 2: 伴侣 -->
  <div class="project-card" data-project-id="project2">
  <div class="project-image"><img src="assets/images/project-companion.jpg" alt="《伴侣》预告片"></div>
  <div class="project-content">
@@ -349,26 +349,8 @@
  </div>
  </div>
  
- <!-- 项目 5: 重韵之城 -->
+ <!-- 项目 5: 春禾秋野 -->
  <div class="project-card" data-project-id="project5">
- <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="重韵之城"></div>
- <div class="project-content">
- <span class="category">人文纪录片</span>
- <h3>重韵之城</h3>
- </div>
- </div>
- 
- <!-- 项目 6: 足满人间 -->
- <div class="project-card" data-project-id="project6">
- <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="足满人间"></div>
- <div class="project-content">
- <span class="category">文化宣传片</span>
- <h3>足满人间</h3>
- </div>
- </div>
- 
- <!-- 项目 7: 春禾秋野 -->
- <div class="project-card" data-project-id="project7">
  <div class="project-image"><img src="assets/images/project-chunheqiu.jpg" alt="春禾秋野"></div>
  <div class="project-content">
  <span class="category">文化宣传片</span>
@@ -376,21 +358,39 @@
  </div>
  </div>
  
- <!-- 项目 8: 微醺一刻 -->
- <div class="project-card" data-project-id="project8">
- <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="微醺一刻"></div>
+ <!-- 项目 6: 重韵之城 -->
+ <div class="project-card" data-project-id="project6">
+ <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="重韵之城"></div>
  <div class="project-content">
- <span class="category">商业广告</span>
- <h3>微醺一刻，境随心转</h3>
+ <span class="category">人文纪录片</span>
+ <h3>重韵之城</h3>
  </div>
  </div>
  
- <!-- 项目 9: 81岁的HBN美少女 -->
- <div class="project-card" data-project-id="project9">
+ <!-- 项目 7: 足满人间 -->
+ <div class="project-card" data-project-id="project7">
+ <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="足满人间"></div>
+ <div class="project-content">
+ <span class="category">文化宣传片</span>
+ <h3>足满人间</h3>
+ </div>
+ </div>
+ 
+ <!-- 项目 8: HBN -->
+ <div class="project-card" data-project-id="project8">
  <div class="project-image"><img src="assets/images/project-hbn.jpg" alt="81岁的HBN美少女"></div>
  <div class="project-content">
  <span class="category">商业广告</span>
  <h3>81岁的HBN美少女</h3>
+ </div>
+ </div>
+
+ <!-- 项目 9: 微醺一刻 -->
+ <div class="project-card" data-project-id="project9">
+ <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="微醺一刻"></div>
+ <div class="project-content">
+ <span class="category">商业广告</span>
+ <h3>微醺一刻，境随心转</h3>
  </div>
  </div>
  
@@ -456,6 +456,7 @@
  });
  });
  
+ // 【已按您的要求更新顺序】
  const projectsData = {
  'project1': {
  title: 'Peekaboo躲猫猫',
@@ -495,39 +496,39 @@
  privateNotice: '由于版权及个人毕设原因，本片暂不在线公开，敬请谅解。'
  },
  'project5': {
- title: '重韵之城',
- type: '人文纪录片',
- awards: '重庆“IP·创未来”人文纪录片三等奖',
- description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTU5Mg==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project6': {
- title: '足满人间',
- type: '文化宣传片',
- awards: '大足石刻华服视频三等奖 / 荣登重庆日报',
- description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性，唤起观众对内心平静的追求。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project7': {
  title: '春禾秋野',
  type: '文化宣传片',
  awards: '（请在这里填写奖项）',
  description: '（请在这里填写对《春禾秋野》的详细描述）',
  videoContent: `<div class="modal-video-container"><iframe src='（请在这里粘贴视频嵌入代码）' frameborder=0 'allowfullscreen'></iframe></div>`
  },
- 'project8': {
- title: '微醺一刻，境随心转',
- type: '商业广告',
- awards: '时报金犊奖优秀奖 & 剪辑奖',
- description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
+ 'project6': {
+ title: '重韵之城',
+ type: '人文纪录片',
+ awards: '重庆“IP·创未来”人文纪录片三等奖',
+ description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTU5Mg==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project7': {
+ title: '足满人间',
+ type: '文化宣传片',
+ awards: '大足石刻华服视频三等奖 / 荣登重庆日报',
+ description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性，唤起观众对内心平静的追求。',
  videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
  },
- 'project9': {
+ 'project8': {
  title: '81岁的HBN美少女',
  type: '商业广告',
  awards: '大学生广告艺术大赛优秀奖',
  description: '本片借鉴卓别林电影元素，通过18岁与81岁间的幽默误会，在黑白复古的诙谐氛围中生动展现产品的卓越抗衰功能，旨在传递美好生活的积极态度。',
  videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTQ2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project9': {
+ title: '微醺一刻，境随心转',
+ type: '商业广告',
+ awards: '时报金犊奖优秀奖 & 剪辑奖',
+ description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
  }
  };
 
