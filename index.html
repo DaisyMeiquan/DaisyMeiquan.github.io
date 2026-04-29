@@ -39,9 +39,13 @@
  color: var(--text-color);
  line-height: 1.8;
  -webkit-font-smoothing: antialiased;
- padding-top: 90px; /* 为固定的导航栏留出顶部空间 */
+ padding-top: 90px;
  }
- .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+ .container { 
+    max-width: 1200px; /* 【已修改】将最大宽度从1100px增加到1200px，让布局更舒展 */
+    margin: 0 auto; 
+    padding: 0 40px; 
+ }
  section { padding: 80px 0; }
  .section-title {
  text-align: center;
@@ -60,7 +64,7 @@
  margin: 0 auto;
  }
 
- /* --- 3. 导航栏 (固定巧克力色) --- */
+ /* --- 3. 导航栏 --- */
  .navbar {
  padding: 20px 0;
  position: fixed;
@@ -150,7 +154,13 @@
  cursor: pointer;
  }
  .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
- .project-image img { width: 100%; height: 220px; object-fit: cover; display: block; }
+ .project-image img { 
+    width: 100%; 
+    display: block;
+    /* 【已修改】确保图片按16:9比例显示，不再裁切 */
+    aspect-ratio: 16 / 9;
+    object-fit: cover; /* 保留cover以防图片尺寸不标准，但aspect-ratio会优先保证比例 */
+ }
  .project-content { padding: 25px; }
  .project-content .category { display: inline-block; font-size: 12px; font-weight: 700; color: var(--subtitle-color); background-color: rgba(162, 119, 100, 0.1); padding: 4px 10px; border-radius: 20px; margin-bottom: 15px; }
  .project-content h3 { font-family: var(--font-heading); font-size: 22px; color: var(--text-color); margin-bottom: 10px; }
@@ -262,6 +272,8 @@
 </head>
 <body>
 
+ <!-- 下面的 HTML 和 SCRIPT 部分和之前完全一样，无需改动 -->
+
  <nav class="navbar">
  <div class="container">
  <a href="#home" class="nav-logo">WMQ</a>
@@ -299,7 +311,6 @@
  <h2>作品集 | Projects</h2>
  <p>从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
  </div>
- <!-- 【已更新为9个作品】 -->
  <div class="portfolio-grid">
  
  <!-- 项目 1: Peekaboo躲猫猫 -->
@@ -356,7 +367,7 @@
  </div>
  </div>
  
- <!-- 项目 7: 春禾秋野 (新添加) -->
+ <!-- 项目 7: 春禾秋野 -->
  <div class="project-card" data-project-id="project7">
  <div class="project-image"><img src="assets/images/project-chunheqiu.jpg" alt="春禾秋野"></div>
  <div class="project-content">
@@ -424,19 +435,16 @@
  </div>
  </footer>
 
- <!-- 弹窗 Modal 的 HTML 结构 -->
  <div id="projectModal" class="modal">
  <div class="modal-content">
  <span class="close-button">&times;</span>
  <div id="modal-body-content">
- <!-- JS 会在这里动态填充内容 -->
  </div>
  </div>
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
  <script>
- // --- 打字效果脚本 ---
  document.addEventListener('DOMContentLoaded', function() {
  new Typed('#typing-text', {
  strings: ['影视导演', 'AI影像探索者', '视觉叙事者'],
@@ -448,8 +456,6 @@
  });
  });
  
- // --- 弹窗交互脚本 ---
- // 1. 定义所有项目的数据 (已更新为9个项目)
  const projectsData = {
  'project1': {
  title: 'Peekaboo躲猫猫',
@@ -525,12 +531,10 @@
  }
  };
 
- // 2. 获取元素
  const modal = document.getElementById('projectModal');
  const modalContent = document.getElementById('modal-body-content');
  const closeBtn = document.querySelector('.close-button');
 
- // 3. 为每个作品卡片添加点击事件
  document.querySelectorAll('.project-card').forEach(item => {
  item.addEventListener('click', () => {
  const projectId = item.getAttribute('data-project-id');
@@ -553,15 +557,14 @@
  `;
  
  modal.style.display = 'block';
- document.body.style.overflow = 'hidden'; // 禁止背景滚动
+ document.body.style.overflow = 'hidden';
  });
  });
 
- // 4. 关闭弹窗的逻辑
  function closeModal() {
  modal.style.display = 'none';
- modalContent.innerHTML = ''; // 清空内容，确保视频停止播放
- document.body.style.overflow = ''; // 恢复背景滚动
+ modalContent.innerHTML = '';
+ document.body.style.overflow = '';
  }
  closeBtn.onclick = closeModal;
  window.onclick = function(event) {
