@@ -142,13 +142,12 @@
  #portfolio { background-color: var(--bg-secondary-color); }
  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
  .project-card { 
-     background: var(--card-bg-color); 
-     border-radius: 12px; 
-     overflow: hidden; 
-     box-shadow: var(--shadow-sm); 
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     /* 添加cursor pointer表示可点击 */
-     cursor: pointer;
+ background: var(--card-bg-color); 
+ border-radius: 12px; 
+ overflow: hidden; 
+ box-shadow: var(--shadow-sm); 
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ cursor: pointer;
  }
  .project-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
  .project-image img { width: 100%; height: 220px; object-fit: cover; display: block; }
@@ -157,7 +156,7 @@
  .project-content h3 { font-family: var(--font-heading); font-size: 22px; color: var(--text-color); margin-bottom: 10px; }
  .project-content p { font-size: 15px; opacity: 0.8; }
  
- /* --- 7. 关于我, 联系我, 页脚 (原封不动) --- */
+ /* --- 7. 关于我, 联系我, 页脚 --- */
  #about { background-color: var(--bg-color); }
  .about-container { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
  .about-image img { width: 100%; border-radius: 12px; box-shadow: var(--shadow-md); }
@@ -175,86 +174,86 @@
  footer { padding: 40px 0; text-align: center; background-color: var(--bg-color); }
  footer p { font-size: 14px; color: var(--text-color); opacity: 0.7; }
  
- /* --- 8. 【新增】弹窗 Modal 样式 --- */
+ /* --- 8. 弹窗 Modal 样式 --- */
  .modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(77, 19, 8, 0.8); /* 使用巧克力色作为背景遮罩 */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s ease-out;
+ display: none;
+ position: fixed;
+ z-index: 2000;
+ left: 0;
+ top: 0;
+ width: 100%;
+ height: 100%;
+ overflow: auto;
+ background-color: rgba(77, 19, 8, 0.8);
+ backdrop-filter: blur(5px);
+ -webkit-backdrop-filter: blur(5px);
+ animation: fadeIn 0.3s ease-out;
  }
  .modal-content {
-    position: relative;
-    background-color: var(--card-bg-color);
-    margin: 5% auto;
-    padding: 30px 40px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 900px;
-    box-shadow: var(--shadow-md);
-    animation: slideIn 0.4s ease-out;
+ position: relative;
+ background-color: var(--card-bg-color);
+ margin: 5% auto;
+ padding: 30px 40px;
+ border-radius: 12px;
+ width: 90%;
+ max-width: 900px;
+ box-shadow: var(--shadow-md);
+ animation: slideIn 0.4s ease-out;
  }
  .close-button {
-    color: var(--subtitle-color);
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 35px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+ color: var(--subtitle-color);
+ position: absolute;
+ top: 15px;
+ right: 25px;
+ font-size: 35px;
+ font-weight: bold;
+ transition: color 0.3s ease;
  }
  .close-button:hover, .close-button:focus {
-    color: var(--heading-color);
-    text-decoration: none;
-    cursor: pointer;
+ color: var(--heading-color);
+ text-decoration: none;
+ cursor: pointer;
  }
  .modal-video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    background-color: #000;
-    border-radius: 8px;
-    margin-bottom: 25px;
+ position: relative;
+ padding-bottom: 56.25%; /* 16:9 */
+ height: 0;
+ overflow: hidden;
+ background-color: #000;
+ border-radius: 8px;
+ margin-bottom: 25px;
  }
  .modal-video-container iframe, .modal-video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ border: 0;
  }
  .modal-details h3 {
-    font-family: var(--font-heading);
-    font-size: 28px;
-    color: var(--heading-color);
-    margin: 0 0 15px;
+ font-family: var(--font-heading);
+ font-size: 28px;
+ color: var(--heading-color);
+ margin: 0 0 15px;
  }
  .modal-details p {
-    font-size: 15px;
-    margin-bottom: 10px;
-    color: var(--text-color);
-    opacity: 0.9;
+ font-size: 15px;
+ margin-bottom: 10px;
+ color: var(--text-color);
+ opacity: 0.9;
  }
  .modal-details strong {
-    font-weight: 700;
-    color: var(--text-color);
+ font-weight: 700;
+ color: var(--text-color);
  }
  .private-notice {
-    background-color: rgba(162, 119, 100, 0.1);
-    border-left: 4px solid var(--subtitle-color);
-    padding: 15px 20px;
-    margin-top: 20px;
-    border-radius: 4px;
-    font-size: 15px;
+ background-color: rgba(162, 119, 100, 0.1);
+ border-left: 4px solid var(--subtitle-color);
+ padding: 15px 20px;
+ margin-top: 20px;
+ border-radius: 4px;
+ font-size: 15px;
  }
  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
  @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
@@ -289,7 +288,6 @@
  </div>
  </div>
  <div class="hero-image-wrapper">
- <!-- ❗️ 请准备一张名为 "my-photo.jpg" 的头像，放入 assets/images/ 文件夹 -->
  <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
  </div>
  </div>
@@ -301,80 +299,89 @@
  <h2>作品集 | Projects</h2>
  <p>从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
  </div>
- <!-- 【已更新】作品集网格 -->
+ <!-- 【已更新为9个作品】 -->
  <div class="portfolio-grid">
  
-    <!-- 项目 1: Peekaboo躲猫猫 -->
-    <div class="project-card" data-project-id="project1">
-        <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo躲猫猫"></div>
-        <div class="project-content">
-            <span class="category">AIGC动画</span>
-            <h3>Peekaboo躲猫猫</h3>
-        </div>
-    </div>
+ <!-- 项目 1: Peekaboo躲猫猫 -->
+ <div class="project-card" data-project-id="project1">
+ <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo躲猫猫"></div>
+ <div class="project-content">
+ <span class="category">AIGC动画</span>
+ <h3>Peekaboo躲猫猫</h3>
+ </div>
+ </div>
  
-    <!-- 项目 2: 《伴侣》预告片 -->
-    <div class="project-card" data-project-id="project2">
-        <div class="project-image"><img src="assets/images/project-companion.jpg" alt="《伴侣》预告片"></div>
-        <div class="project-content">
-            <span class="category">AIGC概念预告</span>
-            <h3>《伴侣》预告片</h3>
-        </div>
-    </div>
+ <!-- 项目 2: 《伴侣》预告片 -->
+ <div class="project-card" data-project-id="project2">
+ <div class="project-image"><img src="assets/images/project-companion.jpg" alt="《伴侣》预告片"></div>
+ <div class="project-content">
+ <span class="category">AIGC概念预告</span>
+ <h3>《伴侣》预告片</h3>
+ </div>
+ </div>
  
-    <!-- 项目 3: 像电影一样爱你 -->
-    <div class="project-card" data-project-id="project3">
-        <div class="project-image"><img src="assets/images/project-movie-love.jpg" alt="像电影一样爱你"></div>
-        <div class="project-content">
-            <span class="category">音乐MV / 微电影</span>
-            <h3>像电影一样爱你</h3>
-        </div>
-    </div>
+ <!-- 项目 3: 像电影一样爱你 -->
+ <div class="project-card" data-project-id="project3">
+ <div class="project-image"><img src="assets/images/project-movie-love.jpg" alt="像电影一样爱你"></div>
+ <div class="project-content">
+ <span class="category">音乐MV / 微电影</span>
+ <h3>像电影一样爱你</h3>
+ </div>
+ </div>
  
-    <!-- 项目 4: 桃花宗梦 -->
-    <div class="project-card" data-project-id="project4">
-        <div class="project-image"><img src="assets/images/project-taohua.jpg" alt="桃花宗梦"></div>
-        <div class="project-content">
-            <span class="category">纪录片 / 毕业设计</span>
-            <h3>桃花宗梦</h3>
-        </div>
-    </div>
+ <!-- 项目 4: 桃花宗梦 -->
+ <div class="project-card" data-project-id="project4">
+ <div class="project-image"><img src="assets/images/project-taohua.jpg" alt="桃花宗梦"></div>
+ <div class="project-content">
+ <span class="category">纪录片 / 毕业设计</span>
+ <h3>桃花宗梦</h3>
+ </div>
+ </div>
  
-    <!-- 项目 5: 重韵之城 -->
-    <div class="project-card" data-project-id="project5">
-        <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="重韵之城"></div>
-        <div class="project-content">
-            <span class="category">人文纪录片</span>
-            <h3>重韵之城</h3>
-        </div>
-    </div>
+ <!-- 项目 5: 重韵之城 -->
+ <div class="project-card" data-project-id="project5">
+ <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="重韵之城"></div>
+ <div class="project-content">
+ <span class="category">人文纪录片</span>
+ <h3>重韵之城</h3>
+ </div>
+ </div>
  
-    <!-- 项目 6: 足满人间 -->
-    <div class="project-card" data-project-id="project6">
-        <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="足满人间"></div>
-        <div class="project-content">
-            <span class="category">文化宣传片</span>
-            <h3>足满人间</h3>
-        </div>
-    </div>
+ <!-- 项目 6: 足满人间 -->
+ <div class="project-card" data-project-id="project6">
+ <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="足满人间"></div>
+ <div class="project-content">
+ <span class="category">文化宣传片</span>
+ <h3>足满人间</h3>
+ </div>
+ </div>
  
-    <!-- 项目 7: 微醺一刻 -->
-    <div class="project-card" data-project-id="project7">
-        <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="微醺一刻"></div>
-        <div class="project-content">
-            <span class="category">商业广告</span>
-            <h3>微醺一刻，境随心转</h3>
-        </div>
-    </div>
+ <!-- 项目 7: 春禾秋野 (新添加) -->
+ <div class="project-card" data-project-id="project7">
+ <div class="project-image"><img src="assets/images/project-chunheqiu.jpg" alt="春禾秋野"></div>
+ <div class="project-content">
+ <span class="category">文化宣传片</span>
+ <h3>春禾秋野</h3>
+ </div>
+ </div>
  
-    <!-- 项目 8: 81岁的HBN美少女 -->
-    <div class="project-card" data-project-id="project8">
-        <div class="project-image"><img src="assets/images/project-hbn.jpg" alt="81岁的HBN美少女"></div>
-        <div class="project-content">
-            <span class="category">商业广告</span>
-            <h3>81岁的HBN美少女</h3>
-        </div>
-    </div>
+ <!-- 项目 8: 微醺一刻 -->
+ <div class="project-card" data-project-id="project8">
+ <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="微醺一刻"></div>
+ <div class="project-content">
+ <span class="category">商业广告</span>
+ <h3>微醺一刻，境随心转</h3>
+ </div>
+ </div>
+ 
+ <!-- 项目 9: 81岁的HBN美少女 -->
+ <div class="project-card" data-project-id="project9">
+ <div class="project-image"><img src="assets/images/project-hbn.jpg" alt="81岁的HBN美少女"></div>
+ <div class="project-content">
+ <span class="category">商业广告</span>
+ <h3>81岁的HBN美少女</h3>
+ </div>
+ </div>
  
  </div>
  </div>
@@ -382,7 +389,6 @@
 
  <section id="about">
  <div class="container about-container">
- <!-- ❗️ 请准备一张名为 "about-photo.jpg" 的照片，放入 assets/images/ 文件夹 -->
  <div class="about-image"><img src="assets/images/about-photo.jpg" alt="王渼荃工作照"></div>
  <div class="about-text">
  <h3>一个热爱叙事的技术主义者</h3>
@@ -418,98 +424,105 @@
  </div>
  </footer>
 
- <!-- 【新增】弹窗 Modal 的 HTML 结构 -->
+ <!-- 弹窗 Modal 的 HTML 结构 -->
  <div id="projectModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <div id="modal-body-content">
-            <!-- JS 会在这里动态填充内容 -->
-        </div>
-    </div>
+ <div class="modal-content">
+ <span class="close-button">&times;</span>
+ <div id="modal-body-content">
+ <!-- JS 会在这里动态填充内容 -->
+ </div>
+ </div>
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
  <script>
- // --- 您的原有脚本 (打字效果) ---
+ // --- 打字效果脚本 ---
  document.addEventListener('DOMContentLoaded', function() {
-    new Typed('#typing-text', {
-        strings: ['影视导演', 'AI影像探索者', '视觉叙事者'],
-        typeSpeed: 100,
-        backSpeed: 50,
-        backDelay: 1500,
-        loop: true,
-        showCursor: false
-    });
+ new Typed('#typing-text', {
+ strings: ['影视导演', 'AI影像探索者', '视觉叙事者'],
+ typeSpeed: 100,
+ backSpeed: 50,
+ backDelay: 1500,
+ loop: true,
+ showCursor: false
+ });
  });
  
- // --- 【新增】弹窗交互脚本 ---
- // 1. 定义所有项目的数据
+ // --- 弹窗交互脚本 ---
+ // 1. 定义所有项目的数据 (已更新为9个项目)
  const projectsData = {
-    'project1': {
-        title: 'Peekaboo躲猫猫',
-        type: 'AIGC动画',
-        awards: '香港AI电影大赛冠军 & 最佳叙事奖',
-        description: '作为本片的独立制作人，我完整运用AIGC工具链主导了全流程。这部作品是探索AI叙事能力的最佳实践，也是我AI影像创作能力的核心案例。',
-        videoContent: `<div class="modal-video-container">
-                           <video controls autoplay muted loop>
-                               <source src="assets/videos/peekaboo.mp4" type="video/mp4">
-                               您的浏览器不支持 video 标签。
-                           </video>
-                       </div>`
-    },
-    'project2': {
-        title: '《伴侣》预告片',
-        type: 'AIGC概念预告',
-        awards: '个人探索项目 (创作中)',
-        description: '这是我个人发起的一项AIGC创作实验，旨在探索AI在科幻题材概念设计与动态镜头生成方面的能力边界。',
-        videoContent: '',
-        isPrivate: true,
-        privateNotice: '由于项目正在创作中，暂不公开展示，欢迎邮件联系我深入交流。'
-    },
-    'project3': {
-        title: '像电影一样爱你',
-        type: '音乐MV / 微电影',
-        awards: '重庆艺术展演三等奖 / 大学生技能赛一等奖',
-        description: '本片灵感源于《情书》、《爱乐之城》等经典，通过平行蒙太奇手法让主角穿梭于现实与梦境，在重庆街巷中致敬浪漫经典，并以此探讨理想与爱情的真谛。',
-        videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQzNjM5NTQ2OA==' frameborder=0 'allowfullscreen'></iframe></div>`
-    },
-    'project4': {
-        title: '桃花宗梦',
-        type: '纪录片 / 毕业设计',
-        awards: '优秀毕业设计',
-        description: '作为我的优秀毕业设计，我独立制作了这部纪录片。影片通过长期跟拍宗族文化传承者，探讨了传统在现代社会中的坚守与创新。',
-        videoContent: '',
-        isPrivate: true,
-        privateNotice: '由于版权及个人毕设原因，本片暂不在线公开，敬请谅解。'
-    },
-    'project5': {
-        title: '重韵之城',
-        type: '人文纪录片',
-        awards: '重庆“IP·创未来”人文纪录片三等奖',
-        description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。',
-        videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTU5Mg==' frameborder=0 'allowfullscreen'></iframe></div>`
-    },
-    'project6': {
-        title: '足满人间',
-        type: '文化宣传片',
-        awards: '大足石刻华服视频三等奖 / 荣登重庆日报',
-        description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性，唤起观众对内心平静的追求。',
-        videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
-    },
-    'project7': {
-        title: '微醺一刻，境随心转',
-        type: '商业广告',
-        awards: '时报金犊奖优秀奖 & 剪辑奖',
-        description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
-        videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>` // 注意：这个链接和上面一样，如果不同请替换
-    },
-    'project8': {
-        title: '81岁的HBN美少女',
-        type: '商业广告',
-        awards: '大学生广告艺术大赛优秀奖',
-        description: '本片借鉴卓别林电影元素，通过18岁与81岁间的幽默误会，在黑白复古的诙谐氛围中生动展现产品的卓越抗衰功能，旨在传递美好生活的积极态度。',
-        videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTQ2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
-    }
+ 'project1': {
+ title: 'Peekaboo躲猫猫',
+ type: 'AIGC动画',
+ awards: '香港AI电影大赛冠军 & 最佳叙事奖',
+ description: '作为本片的独立制作人，我完整运用AIGC工具链主导了全流程。这部作品是探索AI叙事能力的最佳实践，也是我AI影像创作能力的核心案例。',
+ videoContent: `<div class="modal-video-container">
+ <video controls autoplay muted loop>
+ <source src="assets/videos/peekaboo.mp4" type="video/mp4">
+ 您的浏览器不支持 video 标签。
+ </video>
+ </div>`
+ },
+ 'project2': {
+ title: '《伴侣》预告片',
+ type: 'AIGC概念预告',
+ awards: '个人探索项目 (创作中)',
+ description: '这是我个人发起的一项AIGC创作实验，旨在探索AI在科幻题材概念设计与动态镜头生成方面的能力边界。',
+ videoContent: '',
+ isPrivate: true,
+ privateNotice: '由于项目正在创作中，暂不公开展示，欢迎邮件联系我深入交流。'
+ },
+ 'project3': {
+ title: '像电影一样爱你',
+ type: '音乐MV / 微电影',
+ awards: '重庆艺术展演三等奖 / 大学生技能赛一等奖',
+ description: '本片灵感源于《情书》、《爱乐之城》等经典，通过平行蒙太奇手法让主角穿梭于现实与梦境，在重庆街巷中致敬浪漫经典，并以此探讨理想与爱情的真谛。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQzNjM5NTQ2OA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project4': {
+ title: '桃花宗梦',
+ type: '纪录片 / 毕业设计',
+ awards: '优秀毕业设计',
+ description: '作为我的优秀毕业设计，我独立制作了这部纪录片。影片通过长期跟拍宗族文化传承者，探讨了传统在现代社会中的坚守与创新。',
+ videoContent: '',
+ isPrivate: true,
+ privateNotice: '由于版权及个人毕设原因，本片暂不在线公开，敬请谅解。'
+ },
+ 'project5': {
+ title: '重韵之城',
+ type: '人文纪录片',
+ awards: '重庆“IP·创未来”人文纪录片三等奖',
+ description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTU5Mg==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project6': {
+ title: '足满人间',
+ type: '文化宣传片',
+ awards: '大足石刻华服视频三等奖 / 荣登重庆日报',
+ description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性，唤起观众对内心平静的追求。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project7': {
+ title: '春禾秋野',
+ type: '文化宣传片',
+ awards: '（请在这里填写奖项）',
+ description: '（请在这里填写对《春禾秋野》的详细描述）',
+ videoContent: `<div class="modal-video-container"><iframe src='（请在这里粘贴视频嵌入代码）' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project8': {
+ title: '微醺一刻，境随心转',
+ type: '商业广告',
+ awards: '时报金犊奖优秀奖 & 剪辑奖',
+ description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ },
+ 'project9': {
+ title: '81岁的HBN美少女',
+ type: '商业广告',
+ awards: '大学生广告艺术大赛优秀奖',
+ description: '本片借鉴卓别林电影元素，通过18岁与81岁间的幽默误会，在黑白复古的诙谐氛围中生动展现产品的卓越抗衰功能，旨在传递美好生活的积极态度。',
+ videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTQ2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ }
  };
 
  // 2. 获取元素
@@ -519,42 +532,42 @@
 
  // 3. 为每个作品卡片添加点击事件
  document.querySelectorAll('.project-card').forEach(item => {
-    item.addEventListener('click', () => {
-        const projectId = item.getAttribute('data-project-id');
-        const data = projectsData[projectId];
+ item.addEventListener('click', () => {
+ const projectId = item.getAttribute('data-project-id');
+ const data = projectsData[projectId];
 
-        let privateNoticeHTML = '';
-        if (data.isPrivate && data.privateNotice) {
-            privateNoticeHTML = `<div class="private-notice">${data.privateNotice}</div>`;
-        }
-        
-        // 填充弹窗内容
-        modalContent.innerHTML = `
-            ${data.videoContent}
-            <div class="modal-details">
-                <h3>${data.title}</h3>
-                <p><strong>类型:</strong> ${data.type}</p>
-                <p><strong>获奖:</strong> ${data.awards}</p>
-                <p>${data.description}</p>
-                ${privateNoticeHTML}
-            </div>
-        `;
-
-        // 显示弹窗
-        modal.style.display = 'block';
-    });
+ let privateNoticeHTML = '';
+ if (data.isPrivate && data.privateNotice) {
+ privateNoticeHTML = `<div class="private-notice">${data.privateNotice}</div>`;
+ }
+ 
+ modalContent.innerHTML = `
+ ${data.videoContent}
+ <div class="modal-details">
+ <h3>${data.title}</h3>
+ <p><strong>类型:</strong> ${data.type}</p>
+ <p><strong>获奖:</strong> ${data.awards}</p>
+ <p>${data.description}</p>
+ ${privateNoticeHTML}
+ </div>
+ `;
+ 
+ modal.style.display = 'block';
+ document.body.style.overflow = 'hidden'; // 禁止背景滚动
+ });
  });
 
  // 4. 关闭弹窗的逻辑
  function closeModal() {
-    modal.style.display = 'none';
-    modalContent.innerHTML = ''; // 清空内容，确保视频停止播放
+ modal.style.display = 'none';
+ modalContent.innerHTML = ''; // 清空内容，确保视频停止播放
+ document.body.style.overflow = ''; // 恢复背景滚动
  }
  closeBtn.onclick = closeModal;
  window.onclick = function(event) {
-    if (event.target == modal) {
-        closeModal();
-    }
+ if (event.target == modal) {
+ closeModal();
+ }
  }
 
  </script>
