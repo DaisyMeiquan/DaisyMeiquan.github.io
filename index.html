@@ -147,6 +147,21 @@
  /* --- 6. 作品集区块 --- */
  #portfolio { background-color: var(--bg-secondary-color); }
  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+ 
+ /* 【新增】分类标题样式 */
+ .portfolio-category-title {
+    grid-column: 1 / -1; /* 关键：让标题横跨所有列 */
+    font-family: var(--font-heading);
+    font-size: 28px;
+    color: var(--text-color);
+    margin: 40px 0 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(77, 19, 8, 0.2);
+ }
+ .portfolio-grid > .portfolio-category-title:first-child {
+    margin-top: 0; /* 第一个分类标题不需要上边距 */
+ }
+
  .project-card { 
  background: var(--card-bg-color); 
  border-radius: 12px; 
@@ -262,7 +277,9 @@
  background-color: rgba(162, 119, 100, 0.1);
  border-left: 4px solid var(--subtitle-color);
  padding: 15px 20px;
- margin-top: 20px;
+ margin-top:
+
+ 20px;
  border-radius: 4px;
  font-size: 15px;
  }
@@ -299,6 +316,7 @@
  </div>
  </div>
  <div class="hero-image-wrapper">
+ <div class="background-shape"></div>
  <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
  </div>
  </div>
@@ -310,9 +328,12 @@
  <h2>作品集 | Projects</h2>
  <p>从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
  </div>
- <!-- 【已按您的要求更新顺序】 -->
+ <!-- 【已按您的要求进行分类和重新排序】 -->
  <div class="portfolio-grid">
  
+ <!-- === 分类: AIGC 影像 === -->
+ <h3 class="portfolio-category-title">AIGC 影像</h3>
+
  <!-- 项目 1: Peekaboo -->
  <div class="project-card" data-project-id="project1">
  <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo躲猫猫"></div>
@@ -330,7 +351,10 @@
  <h3>《伴侣》预告片</h3>
  </div>
  </div>
- 
+
+ <!-- === 分类: 音乐MV / 微电影 === -->
+ <h3 class="portfolio-category-title">音乐MV / 微电影</h3>
+
  <!-- 项目 3: 像电影一样爱你 -->
  <div class="project-card" data-project-id="project3">
  <div class="project-image"><img src="assets/images/project-movie-love.jpg" alt="像电影一样爱你"></div>
@@ -339,7 +363,10 @@
  <h3>像电影一样爱你</h3>
  </div>
  </div>
- 
+
+ <!-- === 分类: 纪录片 === -->
+ <h3 class="portfolio-category-title">纪录片</h3>
+
  <!-- 项目 4: 桃花宗梦 -->
  <div class="project-card" data-project-id="project4">
  <div class="project-image"><img src="assets/images/project-taohua.jpg" alt="桃花宗梦"></div>
@@ -375,6 +402,9 @@
  <h3>足满人间</h3>
  </div>
  </div>
+
+ <!-- === 分类: 商业广告与宣传片 === -->
+ <h3 class="portfolio-category-title">商业广告与宣传片</h3>
  
  <!-- 项目 8: HBN -->
  <div class="project-card" data-project-id="project8">
@@ -456,7 +486,6 @@
  });
  });
  
- // 【已按您的要求更新顺序】
  const projectsData = {
  'project1': {
  title: 'Peekaboo躲猫猫',
@@ -528,7 +557,8 @@
  type: '商业广告',
  awards: '时报金犊奖优秀奖 & 剪辑奖',
  description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
+ // 【注意】这里的视频代码与项目7重复了，我已将其替换为占位符，请您更新为正确的视频代码。
+ videoContent: `<div class="modal-video-container"><iframe src='（请在这里粘贴“微醺一刻”的正确视频嵌入代码）' frameborder=0 'allowfullscreen'></iframe></div>`
  }
  };
 
