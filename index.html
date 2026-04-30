@@ -96,6 +96,36 @@
  .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width 0.3s ease; }
  .nav-links a:hover::after { width: 100%; }
 
+ /* 【新增】语言切换器样式 */
+ .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-left: 20px;
+ }
+ .lang-switcher span {
+    color: var(--light-text-color);
+    opacity: 0.5;
+    font-size: 14px;
+    user-select: none;
+ }
+ .lang-switcher a.lang-btn {
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+ }
+ .lang-switcher a.lang-btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+ }
+
  /* --- 4. 按钮 --- */
  .btn { display: inline-block; background: var(--primary-color); color: var(--text-color); padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; border: 2px solid var(--primary-color); transition: all 0.3s ease; box-shadow: var(--shadow-sm); }
  .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); background: #e9a5b4; }
@@ -148,9 +178,8 @@
  #portfolio { background-color: var(--bg-secondary-color); }
  .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
  
- /* 【新增】分类标题样式 */
  .portfolio-category-title {
-    grid-column: 1 / -1; /* 关键：让标题横跨所有列 */
+    grid-column: 1 / -1; 
     font-family: var(--font-heading);
     font-size: 28px;
     color: var(--text-color);
@@ -159,7 +188,7 @@
     border-bottom: 2px solid rgba(77, 19, 8, 0.2);
  }
  .portfolio-grid > .portfolio-category-title:first-child {
-    margin-top: 0; /* 第一个分类标题不需要上边距 */
+    margin-top: 0; 
  }
 
  .project-card { 
@@ -277,9 +306,7 @@
  background-color: rgba(162, 119, 100, 0.1);
  border-left: 4px solid var(--subtitle-color);
  padding: 15px 20px;
- margin-top:
-
- 20px;
+ margin-top: 20px;
  border-radius: 4px;
  font-size: 15px;
  }
@@ -291,319 +318,336 @@
 <body>
 
  <nav class="navbar">
- <div class="container">
- <a href="#home" class="nav-logo">WMQ</a>
- <ul class="nav-links">
- <li><a href="#portfolio">作品集</a></li>
- <li><a href="#about">关于我</a></li>
- <li><a href="#contact">联系我</a></li>
- </ul>
- </div>
- </nav>
+    <div class="container">
+        <a href="#home" class="nav-logo">WMQ</a>
+        <ul class="nav-links">
+            <li><a href="#portfolio" data-lang-key="nav_portfolio">作品集</a></li>
+            <li><a href="#about" data-lang-key="nav_about">关于我</a></li>
+            <li><a href="#contact" data-lang-key="nav_contact">联系我</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <a href="#" class="lang-btn" data-lang="zh">中</a>
+            <span>/</span>
+            <a href="#" class="lang-btn" data-lang="en">EN</a>
+        </div>
+    </div>
+</nav>
 
  <section id="home">
- <div class="container hero-container">
- <div class="hero-text">
- <p style="font-weight: 500;">你好，我是</p>
- <h1>王渼荃</h1>
- <div class="subtitle">
- <span id="typing-text"></span><span class="typing-cursor"></span>
- </div>
- <p>以镜头为笔，以AI为墨，在光影中构建叙事，在算法中探索美学。致力于创作触动人心、超越想象的视觉故事。</p>
- <div class="hero-actions">
- <a href="#portfolio" class="btn">探索作品</a>
- <a href="assets/files/my_cv.pdf" class="btn btn-secondary" target="_blank">下载简历</a>
- </div>
- </div>
- <div class="hero-image-wrapper">
- <div class="background-shape"></div>
- <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
- </div>
- </div>
+    <div class="container hero-container">
+        <div class="hero-text">
+            <p style="font-weight: 500;" data-lang-key="hero_greeting">你好，我是</p>
+            <h1>王渼荃</h1>
+            <div class="subtitle">
+                <span id="typing-text"></span><span class="typing-cursor"></span>
+            </div>
+            <p data-lang-key="hero_intro">以镜头为笔，以AI为墨，在光影中构建叙事，在算法中探索美学。致力于创作触动人心、超越想象的视觉故事。</p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn" data-lang-key="hero_btn_explore">探索作品</a>
+                <a href="assets/files/my_cv.pdf" class="btn btn-secondary" target="_blank" data-lang-key="hero_btn_cv">下载简历</a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="background-shape"></div>
+            <img src="assets/images/my-photo.jpg" alt="王渼荃的个人照片">
+        </div>
+    </div>
  </section>
 
  <section id="portfolio">
- <div class="container">
- <div class="section-title">
- <h2>作品集 | Projects</h2>
- <p>从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
- </div>
- <!-- 【已按您的要求进行分类和重新排序】 -->
- <div class="portfolio-grid">
- 
- <!-- === 分类: AIGC 影像 === -->
- <h3 class="portfolio-category-title">AIGC 影像</h3>
+    <div class="container">
+        <div class="section-title">
+            <h2 data-lang-key="portfolio_title">作品集 | Projects</h2>
+            <p data-lang-key="portfolio_subtitle">从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。</p>
+        </div>
+        <div class="portfolio-grid">
+            <h3 class="portfolio-category-title" data-lang-key="cat_aigc">AIGC 影像</h3>
+            <div class="project-card" data-project-id="project1">
+                <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_aigc_anim">AIGC动画</span><h3 data-lang-key="p1_title">Peekaboo躲猫猫</h3></div>
+            </div>
+            <div class="project-card" data-project-id="project2">
+                <div class="project-image"><img src="assets/images/project-companion.jpg" alt="Companion Trailer"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_aigc_concept">AIGC概念预告</span><h3 data-lang-key="p2_title">《伴侣》预告片</h3></div>
+            </div>
+            
+            <h3 class="portfolio-category-title" data-lang-key="cat_mv">音乐MV / 微电影</h3>
+            <div class="project-card" data-project-id="project3">
+                <div class="project-image"><img src="assets/images/project-movie-love.jpg" alt="Love You Like a Movie"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_mv">音乐MV / 微电影</span><h3 data-lang-key="p3_title">像电影一样爱你</h3></div>
+            </div>
 
- <!-- 项目 1: Peekaboo -->
- <div class="project-card" data-project-id="project1">
- <div class="project-image"><img src="assets/images/project-peekaboo.jpg" alt="Peekaboo躲猫猫"></div>
- <div class="project-content">
- <span class="category">AIGC动画</span>
- <h3>Peekaboo躲猫猫</h3>
- </div>
- </div>
- 
- <!-- 项目 2: 伴侣 -->
- <div class="project-card" data-project-id="project2">
- <div class="project-image"><img src="assets/images/project-companion.jpg" alt="《伴侣》预告片"></div>
- <div class="project-content">
- <span class="category">AIGC概念预告</span>
- <h3>《伴侣》预告片</h3>
- </div>
- </div>
+            <h3 class="portfolio-category-title" data-lang-key="cat_doc">纪录片</h3>
+            <div class="project-card" data-project-id="project4">
+                <div class="project-image"><img src="assets/images/project-taohua.jpg" alt="Tao Hua Zong Meng"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_doc_grad">纪录片 / 毕业设计</span><h3 data-lang-key="p4_title">桃花宗梦</h3></div>
+            </div>
+            <div class="project-card" data-project-id="project5">
+                <div class="project-image"><img src="assets/images/project-chunheqiu.jpg" alt="Chunheqiuye"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_cultural_promo">文化宣传片</span><h3 data-lang-key="p5_title">春禾秋野</h3></div>
+            </div>
+            <div class="project-card" data-project-id="project6">
+                <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="City of Echoing Rhymes"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_humanity_doc">人文纪录片</span><h3 data-lang-key="p6_title">重韵之城</h3></div>
+            </div>
+            <div class="project-card" data-project-id="project7">
+                <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="Zuman"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_cultural_promo">文化宣传片</span><h3 data-lang-key="p7_title">足满人间</h3></div>
+            </div>
 
- <!-- === 分类: 音乐MV / 微电影 === -->
- <h3 class="portfolio-category-title">音乐MV / 微电影</h3>
-
- <!-- 项目 3: 像电影一样爱你 -->
- <div class="project-card" data-project-id="project3">
- <div class="project-image"><img src="assets/images/project-movie-love.jpg" alt="像电影一样爱你"></div>
- <div class="project-content">
- <span class="category">音乐MV / 微电影</span>
- <h3>像电影一样爱你</h3>
- </div>
- </div>
-
- <!-- === 分类: 纪录片 === -->
- <h3 class="portfolio-category-title">纪录片</h3>
-
- <!-- 项目 4: 桃花宗梦 -->
- <div class="project-card" data-project-id="project4">
- <div class="project-image"><img src="assets/images/project-taohua.jpg" alt="桃花宗梦"></div>
- <div class="project-content">
- <span class="category">纪录片 / 毕业设计</span>
- <h3>桃花宗梦</h3>
- </div>
- </div>
- 
- <!-- 项目 5: 春禾秋野 -->
- <div class="project-card" data-project-id="project5">
- <div class="project-image"><img src="assets/images/project-chunheqiu.jpg" alt="春禾秋野"></div>
- <div class="project-content">
- <span class="category">文化宣传片</span>
- <h3>春禾秋野</h3>
- </div>
- </div>
- 
- <!-- 项目 6: 重韵之城 -->
- <div class="project-card" data-project-id="project6">
- <div class="project-image"><img src="assets/images/project-chongqing.jpg" alt="重韵之城"></div>
- <div class="project-content">
- <span class="category">人文纪录片</span>
- <h3>重韵之城</h3>
- </div>
- </div>
- 
- <!-- 项目 7: 足满人间 -->
- <div class="project-card" data-project-id="project7">
- <div class="project-image"><img src="assets/images/project-zuman.jpg" alt="足满人间"></div>
- <div class="project-content">
- <span class="category">文化宣传片</span>
- <h3>足满人间</h3>
- </div>
- </div>
-
- <!-- === 分类: 商业广告与宣传片 === -->
- <h3 class="portfolio-category-title">商业广告与宣传片</h3>
- 
- <!-- 项目 8: HBN -->
- <div class="project-card" data-project-id="project8">
- <div class="project-image"><img src="assets/images/project-hbn.jpg" alt="81岁的HBN美少女"></div>
- <div class="project-content">
- <span class="category">商业广告</span>
- <h3>81岁的HBN美少女</h3>
- </div>
- </div>
-
- <!-- 项目 9: 微醺一刻 -->
- <div class="project-card" data-project-id="project9">
- <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="微醺一刻"></div>
- <div class="project-content">
- <span class="category">商业广告</span>
- <h3>微醺一刻，境随心转</h3>
- </div>
- </div>
- 
- </div>
- </div>
+            <h3 class="portfolio-category-title" data-lang-key="cat_commercial">商业广告与宣传片</h3>
+            <div class="project-card" data-project-id="project8">
+                <div class="project-image"><img src="assets/images/project-hbn.jpg" alt="HBN"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_commercial">商业广告</span><h3 data-lang-key="p8_title">81岁的HBN美少女</h3></div>
+            </div>
+            <div class="project-card" data-project-id="project9">
+                <div class="project-image"><img src="assets/images/project-weixun.jpg" alt="Tipsy Moment"></div>
+                <div class="project-content"><span class="category" data-lang-key="tag_commercial">商业广告</span><h3 data-lang-key="p9_title">微醺一刻，境随心转</h3></div>
+            </div>
+        </div>
+    </div>
  </section>
 
  <section id="about">
- <div class="container about-container">
- <div class="about-image"><img src="assets/images/about-photo.jpg" alt="王渼荃工作照"></div>
- <div class="about-text">
- <h3>一个热爱叙事的技术主义者</h3>
- <p>我毕业于重庆对外经贸学院，主修广播电视编导。电影是我与世界沟通的语言，而技术是我拓展这门语言边界的工具。</p>
- <p>我对AI在影视创作中的应用充满好奇。从 Midjourney 的概念可视化，到 Pika 的视频生成，我相信技术正在重塑我们讲故事的方式。我热衷于将前沿的AI工具融入创作流程，探索人机协作的艺术新范式。</p>
- <p>如果您也在探索视觉叙事的未来，期待与您交流。</p>
- </div>
- </div>
+    <div class="container about-container">
+        <div class="about-image"><img src="assets/images/about-photo.jpg" alt="王渼荃工作照"></div>
+        <div class="about-text">
+            <h3 data-lang-key="about_title">一个热爱叙事的技术主义者</h3>
+            <p data-lang-key="about_p1">我毕业于重庆对外经贸学院，主修广播电视编导。电影是我与世界沟通的语言，而技术是我拓展这门语言边界的工具。</p>
+            <p data-lang-key="about_p2">我对AI在影视创作中的应用充满好奇。从 Midjourney 的概念可视化，到 Pika 的视频生成，我相信技术正在重塑我们讲故事的方式。我热衷于将前沿的AI工具融入创作流程，探索人机协作的艺术新范式。</p>
+            <p data-lang-key="about_p3">如果您也在探索视觉叙事的未来，期待与您交流。</p>
+        </div>
+    </div>
  </section>
 
  <section id="contact">
- <div class="container">
- <div class="contact-container">
- <div class="section-title" style="margin-bottom: 30px;">
- <h2>建立联系 | Get In Touch</h2>
- <p>期待与您交流项目合作、创意想法，或只是简单地聊聊电影与AI。</p>
- </div>
- <div class="contact-info">
- <p><a href="mailto:15155351836@163.com"><i class="fas fa-envelope"></i> 15155351836@163.com</a></p>
- </div>
- <div class="social-links">
- <a href="#" target="_blank" title="微信"><i class="fab fa-weixin"></i></a>
- <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
- <a href="#" target="_blank" title="微博"><i class="fab fa-weibo"></i></a>
- </div>
- </div>
- </div>
+    <div class="container">
+        <div class="contact-container">
+            <div class="section-title" style="margin-bottom: 30px;">
+                <h2 data-lang-key="contact_title">建立联系 | Get In Touch</h2>
+                <p data-lang-key="contact_subtitle">期待与您交流项目合作、创意想法，或只是简单地聊聊电影与AI。</p>
+            </div>
+            <div class="contact-info">
+                <p><a href="mailto:15155351836@163.com"><i class="fas fa-envelope"></i> 15155351836@163.com</a></p>
+            </div>
+            <div class="social-links">
+                <a href="#" target="_blank" title="微信"><i class="fab fa-weixin"></i></a>
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" title="微博"><i class="fab fa-weibo"></i></a>
+            </div>
+        </div>
+    </div>
  </section>
 
  <footer>
- <div class="container">
- <p>&copy; 2024 王渼荃. All Rights Reserved.</p>
- </div>
+    <div class="container">
+        <p data-lang-key="footer_copyright">&copy; 2024 王渼荃. All Rights Reserved.</p>
+    </div>
  </footer>
 
  <div id="projectModal" class="modal">
- <div class="modal-content">
- <span class="close-button">&times;</span>
- <div id="modal-body-content">
- </div>
- </div>
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <div id="modal-body-content"></div>
+    </div>
  </div>
 
  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
  <script>
- document.addEventListener('DOMContentLoaded', function() {
- new Typed('#typing-text', {
- strings: ['影视导演', 'AI影像探索者', '视觉叙事者'],
- typeSpeed: 100,
- backSpeed: 50,
- backDelay: 1500,
- loop: true,
- showCursor: false
- });
- });
- 
- const projectsData = {
- 'project1': {
- title: 'Peekaboo躲猫猫',
- type: 'AIGC动画',
- awards: '香港AI电影大赛冠军 & 最佳叙事奖',
- description: '作为本片的独立制作人，我完整运用AIGC工具链主导了全流程。这部作品是探索AI叙事能力的最佳实践，也是我AI影像创作能力的核心案例。',
- videoContent: `<div class="modal-video-container">
- <video controls autoplay muted loop>
- <source src="assets/videos/peekaboo.mp4" type="video/mp4">
- 您的浏览器不支持 video 标签。
- </video>
- </div>`
- },
- 'project2': {
- title: '《伴侣》预告片',
- type: 'AIGC概念预告',
- awards: '个人探索项目 (创作中)',
- description: '这是我个人发起的一项AIGC创作实验，旨在探索AI在科幻题材概念设计与动态镜头生成方面的能力边界。',
- videoContent: '',
- isPrivate: true,
- privateNotice: '由于项目正在创作中，暂不公开展示，欢迎邮件联系我深入交流。'
- },
- 'project3': {
- title: '像电影一样爱你',
- type: '音乐MV / 微电影',
- awards: '重庆艺术展演三等奖 / 大学生技能赛一等奖',
- description: '本片灵感源于《情书》、《爱乐之城》等经典，通过平行蒙太奇手法让主角穿梭于现实与梦境，在重庆街巷中致敬浪漫经典，并以此探讨理想与爱情的真谛。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQzNjM5NTQ2OA==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project4': {
- title: '桃花宗梦',
- type: '纪录片 / 毕业设计',
- awards: '优秀毕业设计',
- description: '作为我的优秀毕业设计，我独立制作了这部纪录片。影片通过长期跟拍宗族文化传承者，探讨了传统在现代社会中的坚守与创新。',
- videoContent: '',
- isPrivate: true,
- privateNotice: '由于版权及个人毕设原因，本片暂不在线公开，敬请谅解。'
- },
- 'project5': {
- title: '春禾秋野',
- type: '文化宣传片',
- awards: '（请在这里填写奖项）',
- description: '（请在这里填写对《春禾秋野》的详细描述）',
- videoContent: `<div class="modal-video-container"><iframe src='（请在这里粘贴视频嵌入代码）' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project6': {
- title: '重韵之城',
- type: '人文纪录片',
- awards: '重庆“IP·创未来”人文纪录片三等奖',
- description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTU5Mg==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project7': {
- title: '足满人间',
- type: '文化宣传片',
- awards: '大足石刻华服视频三等奖 / 荣登重庆日报',
- description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性，唤起观众对内心平静的追求。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5MDk2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project8': {
- title: '81岁的HBN美少女',
- type: '商业广告',
- awards: '大学生广告艺术大赛优秀奖',
- description: '本片借鉴卓别林电影元素，通过18岁与81岁间的幽默误会，在黑白复古的诙谐氛围中生动展现产品的卓越抗衰功能，旨在传递美好生活的积极态度。',
- videoContent: `<div class="modal-video-container"><iframe src='https://player.youku.com/embed/XNjQ0MzQ5NTQ2NA==' frameborder=0 'allowfullscreen'></iframe></div>`
- },
- 'project9': {
- title: '微醺一刻，境随心转',
- type: '商业广告',
- awards: '时报金犊奖优秀奖 & 剪辑奖',
- description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。',
- // 【注意】这里的视频代码与项目7重复了，我已将其替换为占位符，请您更新为正确的视频代码。
- videoContent: `<div class="modal-video-container"><iframe src='（请在这里粘贴“微醺一刻”的正确视频嵌入代码）' frameborder=0 'allowfullscreen'></iframe></div>`
- }
- };
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 1. 翻译字典 ---
+    const translations = {
+        zh: {
+            nav_portfolio: '作品集', nav_about: '关于我', nav_contact: '联系我',
+            hero_greeting: '你好，我是',
+            hero_intro: '以镜头为笔，以AI为墨，在光影中构建叙事，在算法中探索美学。致力于创作触动人心、超越想象的视觉故事。',
+            hero_btn_explore: '探索作品', hero_btn_cv: '下载简历',
+            typing_strings: ['影视导演', 'AI影像探索者', '视觉叙事者'],
+            portfolio_title: '作品集 | Projects',
+            portfolio_subtitle: '从商业短片到实验影像，从现实捕捉到AI生成，这里是我用光影和代码讲述的故事。',
+            cat_aigc: 'AIGC 影像', cat_mv: '音乐MV / 微电影', cat_doc: '纪录片', cat_commercial: '商业广告与宣传片',
+            tag_aigc_anim: 'AIGC动画', tag_aigc_concept: 'AIGC概念预告', tag_mv: '音乐MV / 微电影', tag_doc_grad: '纪录片 / 毕业设计', tag_cultural_promo: '文化宣传片', tag_humanity_doc: '人文纪录片', tag_commercial: '商业广告',
+            p1_title: 'Peekaboo躲猫猫', p2_title: '《伴侣》预告片', p3_title: '像电影一样爱你', p4_title: '桃花宗梦', p5_title: '春禾秋野', p6_title: '重韵之城', p7_title: '足满人间', p8_title: '81岁的HBN美少女', p9_title: '微醺一刻，境随心转',
+            about_title: '一个热爱叙事的技术主义者',
+            about_p1: '我毕业于重庆对外经贸学院，主修广播电视编导。电影是我与世界沟通的语言，而技术是我拓展这门语言边界的工具。',
+            about_p2: '我对AI在影视创作中的应用充满好奇。从 Midjourney 的概念可视化，到 Pika 的视频生成，我相信技术正在重塑我们讲故事的方式。我热衷于将前沿的AI工具融入创作流程，探索人机协作的艺术新范式。',
+            about_p3: '如果您也在探索视觉叙事的未来，期待与您交流。',
+            contact_title: '建立联系 | Get In Touch',
+            contact_subtitle: '期待与您交流项目合作、创意想法，或只是简单地聊聊电影与AI。',
+            footer_copyright: '© 2024 王渼荃. All Rights Reserved.',
+            modal_type: '类型', modal_awards: '获奖', modal_private_notice_wip: '由于项目正在创作中，暂不公开展示，欢迎邮件联系我深入交流。',
+            modal_private_notice_copyright: '由于版权及个人毕设原因，本片暂不在线公开，敬请谅解。',
+        },
+        en: {
+            nav_portfolio: 'Projects', nav_about: 'About Me', nav_contact: 'Contact',
+            hero_greeting: "Hi, I'm",
+            hero_intro: "Using the lens as my pen and AI as my ink, I build narratives in light and shadow, exploring aesthetics within algorithms. Dedicated to creating visual stories that touch the soul and transcend imagination.",
+            hero_btn_explore: 'Explore Works', hero_btn_cv: 'Download CV',
+            typing_strings: ['Film Director', 'AI Image Explorer', 'Visual Storyteller'],
+            portfolio_title: 'Projects',
+            portfolio_subtitle: 'From commercial shorts to experimental films, from real-world captures to AI creations, here are the stories I tell with light and code.',
+            cat_aigc: 'AIGC Cinema', cat_mv: 'Music Video / Short Film', cat_doc: 'Documentary', cat_commercial: 'Commercial & Promo',
+            tag_aigc_anim: 'AIGC Animation', tag_aigc_concept: 'AIGC Concept Trailer', tag_mv: 'Music Video / Short Film', tag_doc_grad: 'Documentary / Graduation Project', tag_cultural_promo: 'Cultural Promo', tag_humanity_doc: 'Humanity Documentary', tag_commercial: 'Commercial',
+            p1_title: 'Peekaboo', p2_title: 'Companion (Trailer)', p3_title: 'Love You Like a Movie', p4_title: 'Dream of the Peach Blossom Clan', p5_title: 'Spring禾 & Autumn野', p6_title: 'City of Echoing Rhymes', p7_title: 'Joy in the World', p8_title: 'The 81-Year-Old HBN Beauty', p9_title: 'A Tipsy Moment',
+            about_title: 'A Technologist in Love with Storytelling',
+            about_p1: "Graduated from Chongqing University of Foreign Trade and Business with a major in Radio and Television Directing, I use film as my language to communicate with the world, and technology as my tool to expand its boundaries.",
+            about_p2: 'I am fascinated by the application of AI in film production. From concept visualization with Midjourney to video generation with Pika, I believe technology is reshaping how we tell stories. I am passionate about integrating cutting-edge AI tools into the creative process, exploring new paradigms of human-machine artistic collaboration.',
+            about_p3: "If you are also exploring the future of visual narrative, I look forward to connecting with you.",
+            contact_title: 'Get In Touch',
+            contact_subtitle: "I'm open to project collaborations, creative ideas, or just a simple chat about film and AI.",
+            footer_copyright: '© 2024 Meiquan Wang. All Rights Reserved.',
+            modal_type: 'Type', modal_awards: 'Awards', modal_private_notice_wip: 'As the project is currently in development, it is not publicly available. Please feel free to email me for an in-depth discussion.',
+            modal_private_notice_copyright: 'Due to copyright and its nature as a personal graduation project, this film is not available for public online viewing. Thank you for your understanding.',
+        }
+    };
 
- const modal = document.getElementById('projectModal');
- const modalContent = document.getElementById('modal-body-content');
- const closeBtn = document.querySelector('.close-button');
+    // --- 2. 项目数据结构更新 ---
+    const projectsData = {
+        'project1': {
+            zh: { type: 'AIGC动画', awards: '香港AI电影大赛冠军 & 最佳叙事奖', description: '作为本片的独立制作人，我完整运用AIGC工具链主导了全流程。这部作品是探索AI叙事能力的最佳实践，也是我AI影像创作能力的核心案例。', videoContent: `<div class="modal-video-container"><video controls autoplay muted loop><source src="assets/videos/peekaboo.mp4" type="video/mp4"></video></div>` },
+            en: { type: 'AIGC Animation', awards: 'Champion & Best Narrative Award, Hong Kong AI Film Festival', description: 'As the sole producer, I led the entire workflow using an AIGC toolchain. This project is a prime example of exploring AI\'s narrative capabilities and a core case of my AI-powered filmmaking skills.', videoContent: `<!-- 粘贴 Peekaboo 的 Vimeo/YouTube 嵌入代码 -->` }
+        },
+        'project2': {
+            zh: { type: 'AIGC概念预告', awards: '个人探索项目 (创作中)', description: '这是我个人发起的一项AIGC创作实验，旨在探索AI在科幻题材概念设计与动态镜头生成方面的能力边界。', isPrivate: true, noticeKey: 'modal_private_notice_wip' },
+            en: { type: 'AIGC Concept Trailer', awards: 'Personal Exploratory Project (In Progress)', description: 'This is a personal AIGC creative experiment aimed at exploring the boundaries of AI in sci-fi concept design and dynamic shot generation.', isPrivate: true, noticeKey: 'modal_private_notice_wip' }
+        },
+        'project3': {
+            zh: { type: '音乐MV / 微电影', awards: '重庆艺术展演三等奖 / 大学生技能赛一等奖', description: '本片灵感源于《情书》、《爱乐之城》等经典，通过平行蒙太奇手法让主角穿梭于现实与梦境，在重庆街巷中致敬浪漫经典，并以此探讨理想与爱情的真谛。', videoContent: `<!-- 粘贴“像电影一样爱你”的B站嵌入代码 -->` },
+            en: { type: 'Music Video / Short Film', awards: 'Third Prize, Chongqing Art Exhibition / First Prize, University Skills Competition', description: 'Inspired by classics like "Love Letter" and "La La Land," this film uses parallel montage for the protagonist to travel between reality and dreams, paying tribute to romantic classics in the streets of Chongqing.', videoContent: `<!-- 粘贴“像电影一样爱你”的Vimeo/YouTube嵌入代码 -->` }
+        },
+        // ... 继续为所有项目添加中英文数据 ...
+        // 我先为您预留好所有项目的结构
+        'project4': {
+            zh: { type: '纪录片 / 毕业设计', awards: '优秀毕业设计', description: '作为我的优秀毕业设计，我独立制作了这部纪录片。影片通过长期跟拍宗族文化传承者，探讨了传统在现代社会中的坚守与创新。', isPrivate: true, noticeKey: 'modal_private_notice_copyright' },
+            en: { type: 'Documentary / Graduation Project', awards: 'Outstanding Graduation Design', description: 'As my outstanding graduation project, I independently produced this documentary. The film follows a cultural inheritor of a clan over a long period, exploring the persistence and innovation of tradition in modern society.', isPrivate: true, noticeKey: 'modal_private_notice_copyright' }
+        },
+        'project5': {
+            zh: { type: '文化宣传片', awards: '（请填写）', description: '（请填写）', videoContent: `<!-- 粘贴“春禾秋野”的B站嵌入代码 -->` },
+            en: { type: 'Cultural Promo', awards: '(Please fill)', description: '(Please fill)', videoContent: `<!-- 粘贴“春禾秋野”的Vimeo/YouTube嵌入代码 -->` }
+        },
+        'project6': {
+            zh: { type: '人文纪录片', awards: '重庆“IP·创未来”人文纪录片三等奖', description: '作品聚焦于重庆独特的“棒棒”行业与非遗文化，通过纪实镜头拾捡并传承这座城市的文化底蕴，展现了重庆人民勤劳坚守与开放包容的精神品格。', videoContent: `<!-- 粘贴“重韵之城”的B站嵌入代码 -->` },
+            en: { type: 'Humanity Documentary', awards: 'Third Prize, Chongqing "IP·Create Future" Humanity Documentary', description: 'The work focuses on Chongqing\'s unique "Bang Bang" industry and intangible cultural heritage, preserving and passing on the city\'s cultural heritage through documentary lenses.', videoContent: `<!-- 粘贴“重韵之城”的Vimeo/YouTube嵌入代码 -->` }
+        },
+        'project7': {
+            zh: { type: '文化宣传片', awards: '大足石刻华服视频三等奖 / 荣登重庆日报', description: '本片灵感源于“大道至简”的哲学，通过细腻的镜头语言捕捉重庆大足石刻的唯美艺术与禅意氛围，旨在为忙碌的现代生活注入一丝宁静与灵性。', videoContent: `<!-- 粘贴“足满人间”的B站嵌入代码 -->` },
+            en: { type: 'Cultural Promo', awards: 'Third Prize, Dazu Rock Carvings Hanfu Video / Featured in Chongqing Daily', description: 'Inspired by the philosophy of "great truth is simple," this film captures the aesthetic art and Zen atmosphere of the Dazu Rock Carvings in Chongqing through delicate cinematography.', videoContent: `<!-- 粘贴“足满人间”的Vimeo/YouTube嵌入代码 -->` }
+        },
+        'project8': {
+            zh: { type: '商业广告', awards: '大学生广告艺术大赛优秀奖', description: '本片借鉴卓别林电影元素，通过18岁与81岁间的幽默误会，在黑白复古的诙谐氛围中生动展现产品的卓越抗衰功能。', videoContent: `<!-- 粘贴“HBN”的B站嵌入代码 -->` },
+            en: { type: 'Commercial', awards: 'Excellence Award, University Student Advertising Art Competition', description: 'Drawing inspiration from Charlie Chaplin\'s films, this commercial humorously portrays a misunderstanding between an 18-year-old and an 81-year-old to vividly showcase the product\'s anti-aging features in a retro black-and-white style.', videoContent: `<!-- 粘贴“HBN”的Vimeo/YouTube嵌入代码 -->` }
+        },
+        'project9': {
+            zh: { type: '商业广告', awards: '时报金犊奖优秀奖 & 剪辑奖', description: '作品洞察都市女性渴望在快节奏生活中寻找“小确幸”的心理，通过丰富的色彩与生动的镜头切换，将“微醺”这一状态符号化，展现产品带来的愉悦与放松。', videoContent: `<!-- 粘贴“微醺一刻”的B站嵌入代码 -->` },
+            en: { type: 'Commercial', awards: 'Excellence & Best Editing, Times Young Creative Awards', description: 'This work taps into the desire of urban women for "small moments of happiness" in a fast-paced life. Through rich colors and dynamic editing, it symbolizes the "tipsy" state to convey the pleasure and relaxation the product offers.', videoContent: `<!-- 粘贴“微醺一刻”的Vimeo/YouTube嵌入代码 -->` }
+        }
+    };
 
- document.querySelectorAll('.project-card').forEach(item => {
- item.addEventListener('click', () => {
- const projectId = item.getAttribute('data-project-id');
- const data = projectsData[projectId];
+    // --- 3. 语言切换逻辑 ---
+    const langSwitcher = document.querySelector('.lang-switcher');
+    const langButtons = document.querySelectorAll('.lang-btn');
+    let currentLang = 'zh'; 
+    let typed; 
 
- let privateNoticeHTML = '';
- if (data.isPrivate && data.privateNotice) {
- privateNoticeHTML = `<div class="private-notice">${data.privateNotice}</div>`;
- }
- 
- modalContent.innerHTML = `
- ${data.videoContent}
- <div class="modal-details">
- <h3>${data.title}</h3>
- <p><strong>类型:</strong> ${data.type}</p>
- <p><strong>获奖:</strong> ${data.awards}</p>
- <p>${data.description}</p>
- ${privateNoticeHTML}
- </div>
- `;
- 
- modal.style.display = 'block';
- document.body.style.overflow = 'hidden';
- });
- });
+    function switchLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
 
- function closeModal() {
- modal.style.display = 'none';
- modalContent.innerHTML = '';
- document.body.style.overflow = '';
- }
- closeBtn.onclick = closeModal;
- window.onclick = function(event) {
- if (event.target == modal) {
- closeModal();
- }
- }
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            if (translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
 
+        if (typed) {
+            typed.destroy();
+        }
+        typed = new Typed('#typing-text', {
+            strings: translations[lang].typing_strings,
+            typeSpeed: 100, backSpeed: 50, backDelay: 1500, loop: true, showCursor: false
+        });
+
+        langButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        document.documentElement.lang = lang;
+    }
+
+    langSwitcher.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = e.target.getAttribute('data-lang');
+        if (lang && lang !== currentLang) {
+            switchLanguage(lang);
+        }
+    });
+
+    switchLanguage('zh'); 
+
+    // --- 4. 弹窗逻辑修改 ---
+    const modal = document.getElementById('projectModal');
+    const modalContent = document.getElementById('modal-body-content');
+    const closeBtn = document.querySelector('.close-button');
+
+    document.querySelectorAll('.project-card').forEach(item => {
+        item.addEventListener('click', () => {
+            const projectId = item.getAttribute('data-project-id');
+            const project = projectsData[projectId];
+            if (!project) return;
+            
+            const data = project[currentLang];
+            const staticData = translations[currentLang];
+
+            let contentHTML = '';
+            if (data.isPrivate) {
+                const noticeText = staticData[data.noticeKey] || '';
+                contentHTML = `<div class="private-notice">${noticeText}</div>`;
+            } else {
+                contentHTML = data.videoContent || '';
+            }
+
+            modalContent.innerHTML = `
+                ${contentHTML}
+                <div class="modal-details">
+                    <h3>${staticData[projectId.replace('project','p')+'_title']}</h3>
+                    <p><strong>${staticData.modal_type}:</strong> ${data.type}</p>
+                    <p><strong>${staticData.modal_awards}:</strong> ${data.awards}</p>
+                    <p>${data.description}</p>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    
+    function closeModal() {
+        const video = modal.querySelector('iframe, video');
+        if (video) {
+            // 停止视频播放
+            if (video.tagName === 'IFRAME') {
+                const videoSrc = video.src;
+                video.src = videoSrc; // 重新加载iframe以停止播放
+            } else {
+                video.pause();
+            }
+        }
+        modal.style.display = 'none';
+        modalContent.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+    closeBtn.onclick = closeModal;
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+});
  </script>
 </body>
 </html>
